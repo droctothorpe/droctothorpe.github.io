@@ -1,19 +1,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Posts on a code to joy</title>
-        <link>droctothorpe.github.io/posts/</link>
+        <link>/posts/</link>
         <description>Recent content in Posts on a code to joy</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Tue, 23 Jul 2019 00:00:00 +0000</lastBuildDate>
-        <atom:link href="droctothorpe.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>Leveled logs with Cobra and Logrus</title>
-            <link>droctothorpe.github.io/posts/2019/07/leveled-logs-with-cobra-and-logrus/</link>
+            <link>/posts/2019/07/leveled-logs-with-cobra-and-logrus/</link>
             <pubDate>Tue, 23 Jul 2019 00:00:00 +0000</pubDate>
             
-            <guid>droctothorpe.github.io/posts/2019/07/leveled-logs-with-cobra-and-logrus/</guid>
+            <guid>/posts/2019/07/leveled-logs-with-cobra-and-logrus/</guid>
             <description>I recently wrote a CLI using Cobra, a widely adopted CLI framework for Golang that&amp;rsquo;s used in Kubectl, Docker, Terraform, Hugo, and other industry-standard CLIs.
 I wanted to use Logrus, a highly regarded structured logging framework for Go. I wanted informative, colorized, leveled logs, but I also wanted to be able to log simple, user-facing output without all of the bells and whistles. I was surprised at the lack of documentation around this simple goal.</description>
             <content type="html"><![CDATA[<p>I recently wrote a CLI using <a href="https://github.com/spf13/cobra">Cobra</a>, a widely adopted CLI framework for Golang that&rsquo;s used in Kubectl, Docker, Terraform, Hugo, and other industry-standard CLIs.</p>
@@ -72,10 +72,10 @@ I wanted to use Logrus, a highly regarded structured logging framework for Go. I
         
         <item>
             <title>Explain in the Membrane</title>
-            <link>droctothorpe.github.io/posts/2019/07/explain-in-the-membrane/</link>
+            <link>/posts/2019/07/explain-in-the-membrane/</link>
             <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
             
-            <guid>droctothorpe.github.io/posts/2019/07/explain-in-the-membrane/</guid>
+            <guid>/posts/2019/07/explain-in-the-membrane/</guid>
             <description>Explainshell I stumbled into this brilliant tidbit in a post by LostCharacter on ycombinator.
 Here&amp;rsquo;s the actual code:
 explain () { if [ &amp;#34;$#&amp;#34; -eq 0 ] then while read -p &amp;#34;Command: &amp;#34; cmd do curl -Gs &amp;#34;https://www.mankier.com/api/explain/?cols=&amp;#34;$(tput cols) --data-urlencode &amp;#34;q=$cmd&amp;#34; done echo &amp;#34;Bye!&amp;#34; elif [ &amp;#34;$#&amp;#34; -eq 1 ] then curl -Gs &amp;#34;https://www.mankier.com/api/explain/?cols=&amp;#34;$(tput cols) --data-urlencode &amp;#34;q=$1&amp;#34; else echo &amp;#34;Usage&amp;#34; echo &amp;#34;explain interactive mode.&amp;#34; echo &amp;#34;explain &amp;#39;cmd -o | ...&amp;#39; one quoted command to explain it.</description>

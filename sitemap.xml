@@ -3,40 +3,40 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>droctothorpe.github.io/</loc>
+    <loc>/</loc>
     <lastmod>2019-07-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>droctothorpe.github.io/posts/2019/07/leveled-logs-with-cobra-and-logrus/</loc>
+    <loc>/posts/2019/07/leveled-logs-with-cobra-and-logrus/</loc>
     <lastmod>2019-07-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>droctothorpe.github.io/posts/</loc>
+    <loc>/posts/</loc>
     <lastmod>2019-07-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>droctothorpe.github.io/posts/2019/07/explain-in-the-membrane/</loc>
+    <loc>/posts/2019/07/explain-in-the-membrane/</loc>
     <lastmod>2019-07-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>droctothorpe.github.io/about/</loc>
+    <loc>/about/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>droctothorpe.github.io/categories/</loc>
+    <loc>/categories/</loc>
   </url>
   
   <url>
-    <loc>droctothorpe.github.io/series/</loc>
+    <loc>/series/</loc>
   </url>
   
   <url>
-    <loc>droctothorpe.github.io/tags/</loc>
+    <loc>/tags/</loc>
   </url>
   
 </urlset>
