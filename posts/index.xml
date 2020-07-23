@@ -1,0 +1,142 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on a code to joy</title>
+        <link>droctothorpe.github.io/posts/</link>
+        <description>Recent content in Posts on a code to joy</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 23 Jul 2019 00:00:00 +0000</lastBuildDate>
+        <atom:link href="droctothorpe.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Leveled logs with Cobra and Logrus</title>
+            <link>droctothorpe.github.io/posts/2019/07/leveled-logs-with-cobra-and-logrus/</link>
+            <pubDate>Tue, 23 Jul 2019 00:00:00 +0000</pubDate>
+            
+            <guid>droctothorpe.github.io/posts/2019/07/leveled-logs-with-cobra-and-logrus/</guid>
+            <description>I recently wrote a CLI using Cobra, a widely adopted CLI framework for Golang that&amp;rsquo;s used in Kubectl, Docker, Terraform, Hugo, and other industry-standard CLIs.
+I wanted to use Logrus, a highly regarded structured logging framework for Go. I wanted informative, colorized, leveled logs, but I also wanted to be able to log simple, user-facing output without all of the bells and whistles. I was surprised at the lack of documentation around this simple goal.</description>
+            <content type="html"><![CDATA[<p>I recently wrote a CLI using <a href="https://github.com/spf13/cobra">Cobra</a>, a widely adopted CLI framework for Golang that&rsquo;s used in Kubectl, Docker, Terraform, Hugo, and other industry-standard CLIs.</p>
+<p>I wanted to use <a href="https://github.com/sirupsen/logrus">Logrus</a>, a highly regarded structured logging framework for Go. I wanted informative, colorized, leveled logs, but I also wanted to be able to log simple, user-facing output without all of the bells and whistles. I was surprised at the lack of documentation around this simple goal.</p>
+<p>Here&rsquo;s one way to solve this problem.</p>
+<p>Create a file called <code>logging.go</code> in your <code>cmd</code> package:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">cmd</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#a6e22e">log</span> <span style="color:#e6db74">&#34;github.com/sirupsen/logrus&#34;</span>
+	<span style="color:#e6db74">&#34;github.com/spf13/cobra&#34;</span>
+)
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">debug</span> <span style="color:#66d9ef">bool</span>
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">PlainFormatter</span> <span style="color:#66d9ef">struct</span> {
+}
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">f</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">PlainFormatter</span>) <span style="color:#a6e22e">Format</span>(<span style="color:#a6e22e">entry</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Entry</span>) ([]<span style="color:#66d9ef">byte</span>, <span style="color:#66d9ef">error</span>) {
+	<span style="color:#66d9ef">return</span> []byte(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;%s\n&#34;</span>, <span style="color:#a6e22e">entry</span>.<span style="color:#a6e22e">Message</span>)), <span style="color:#66d9ef">nil</span>
+}
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">toggleDebug</span>(<span style="color:#a6e22e">cmd</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">cobra</span>.<span style="color:#a6e22e">Command</span>, <span style="color:#a6e22e">args</span> []<span style="color:#66d9ef">string</span>) {
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">debug</span> {
+		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Info</span>(<span style="color:#e6db74">&#34;Debug logs enabled&#34;</span>)
+		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">SetLevel</span>(<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">DebugLevel</span>)
+		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">SetFormatter</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">TextFormatter</span>{})
+	} <span style="color:#66d9ef">else</span> {
+		<span style="color:#a6e22e">plainFormatter</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">PlainFormatter</span>)
+		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">SetFormatter</span>(<span style="color:#a6e22e">plainFormatter</span>)
+	}
+}
+</code></pre></div><p>Add a <code>PreRun</code> to each of your Cobra commands:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">addCmd</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">cobra</span>.<span style="color:#a6e22e">Command</span>{
+    <span style="color:#f92672">...</span>
+	<span style="color:#a6e22e">PreRun</span>: <span style="color:#a6e22e">toggleDebug</span>, <span style="color:#75715e">// This. 
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">Run</span>: <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">cmd</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">cobra</span>.<span style="color:#a6e22e">Command</span>, <span style="color:#a6e22e">args</span> []<span style="color:#66d9ef">string</span>) {
+    <span style="color:#75715e">// Subcommand logic goes here.
+</span><span style="color:#75715e"></span>    }
+}
+</code></pre></div><p>Add a global persistent flag to <code>root.go</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">init</span>() {
+    <span style="color:#f92672">...</span>
+	<span style="color:#a6e22e">rootCmd</span>.<span style="color:#a6e22e">PersistentFlags</span>().<span style="color:#a6e22e">BoolVarP</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">debug</span>, <span style="color:#e6db74">&#34;debug&#34;</span>, <span style="color:#e6db74">&#34;d&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#34;verbose logging&#34;</span>)
+}
+</code></pre></div><p>It&rsquo;s as simple as that. Now you can reap the benefits of flag-toggled leveled logs. Use the following invocations anywhere in your code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Info</span>()
+<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Debug</span>()
+<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Warning</span>()
+<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Error</span>()
+<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>()
+</code></pre></div><p>Debug logs are suppressed by default. You can pass the <code>--debug</code> or <code>-d</code> flag to any command to print more verbose, colorized debug logs, which are super helpful when troubleshooting.</p>
+<p>I hope you found this helpful.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Explain in the Membrane</title>
+            <link>droctothorpe.github.io/posts/2019/07/explain-in-the-membrane/</link>
+            <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
+            
+            <guid>droctothorpe.github.io/posts/2019/07/explain-in-the-membrane/</guid>
+            <description>Explainshell I stumbled into this brilliant tidbit in a post by LostCharacter on ycombinator.
+Here&amp;rsquo;s the actual code:
+explain () { if [ &amp;#34;$#&amp;#34; -eq 0 ] then while read -p &amp;#34;Command: &amp;#34; cmd do curl -Gs &amp;#34;https://www.mankier.com/api/explain/?cols=&amp;#34;$(tput cols) --data-urlencode &amp;#34;q=$cmd&amp;#34; done echo &amp;#34;Bye!&amp;#34; elif [ &amp;#34;$#&amp;#34; -eq 1 ] then curl -Gs &amp;#34;https://www.mankier.com/api/explain/?cols=&amp;#34;$(tput cols) --data-urlencode &amp;#34;q=$1&amp;#34; else echo &amp;#34;Usage&amp;#34; echo &amp;#34;explain interactive mode.&amp;#34; echo &amp;#34;explain &amp;#39;cmd -o | ...&amp;#39; one quoted command to explain it.</description>
+            <content type="html"><![CDATA[<h2 id="explainshell">Explainshell</h2>
+<p>I stumbled into this brilliant tidbit in a <a href="https://news.ycombinator.com/item?id=13994923">post</a> by LostCharacter on ycombinator.</p>
+<p>Here&rsquo;s the actual code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">explain <span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$#<span style="color:#e6db74">&#34;</span> -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>
+    <span style="color:#66d9ef">then</span>
+        <span style="color:#66d9ef">while</span> read -p <span style="color:#e6db74">&#34;Command: &#34;</span> cmd
+        <span style="color:#66d9ef">do</span>
+            curl -Gs <span style="color:#e6db74">&#34;https://www.mankier.com/api/explain/?cols=&#34;</span><span style="color:#66d9ef">$(</span>tput cols<span style="color:#66d9ef">)</span> --data-urlencode <span style="color:#e6db74">&#34;q=</span>$cmd<span style="color:#e6db74">&#34;</span>
+        <span style="color:#66d9ef">done</span>
+        echo <span style="color:#e6db74">&#34;Bye!&#34;</span>
+    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$#<span style="color:#e6db74">&#34;</span> -eq <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>
+    <span style="color:#66d9ef">then</span>
+        curl -Gs <span style="color:#e6db74">&#34;https://www.mankier.com/api/explain/?cols=&#34;</span><span style="color:#66d9ef">$(</span>tput cols<span style="color:#66d9ef">)</span> --data-urlencode <span style="color:#e6db74">&#34;q=</span>$1<span style="color:#e6db74">&#34;</span>
+    <span style="color:#66d9ef">else</span>
+        echo <span style="color:#e6db74">&#34;Usage&#34;</span>
+        echo <span style="color:#e6db74">&#34;explain                  interactive mode.&#34;</span>
+        echo <span style="color:#e6db74">&#34;explain &#39;cmd -o | ...&#39;   one quoted command to explain it.&#34;</span>
+    <span style="color:#66d9ef">fi</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>It interacts with <a href="https://www.mankier.com/">www.mankier.com</a> (an awesome website in its own right) to explain what a specified bash command does, and most compellingly, what the specified flags do.</p>
+<p><a href="https://www.explainshell.com/">Explainshell</a> offers a similar service, but staying in the terminal ecosystem is preferable because it alleviates the need to switch contexts and justifies a degree of technical elitism. Browsers are for newbs, after all. You&rsquo;re reading this via Lynx I assume.</p>
+<p>Here&rsquo;s an example of usage and corresponding output:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ explain <span style="color:#e6db74">&#39;rsync -a&#39;</span>
+rsync<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>
+  a fast, versatile, remote <span style="color:#f92672">(</span>and local<span style="color:#f92672">)</span> file-copying tool
+-a <span style="color:#f92672">(</span>-A, --ARCHIVE<span style="color:#f92672">)</span>
+    This is equivalent to -RLPTGOD. It is a quick way of saying you want recursion and want to preserve almost everything <span style="color:#f92672">(</span>with -H being a
+    notable omission<span style="color:#f92672">)</span>. The only exception to the above equivalence is when --FILES-FROM is specified, in which <span style="color:#66d9ef">case</span> -R is not implied.
+    
+    Note that -A DOES NOT PRESERVE HARDLINKS, because finding multiply-linked files is expensive. You must separately specify -H.
+                                                                                                             https://www.mankier.com/1/rsync
+</code></pre></div><p>Just add the function to your respective shell profile, and revel in the glory of bashlightenment.</p>
+<h2 id="cheatsh">Cheat.sh</h2>
+<p><a href="https://cheat.sh/">Cheat.sh</a> is very useful. The command line interface can be installed in <a href="https://github.com/chubin/cheat.sh#installation">two steps</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
+chmod +x /usr/local/bin/cht.sh
+</code></pre></div><p>Once installed, just type <code>cheat.sh &lt;any question&gt;</code>. It runs a stack overflow search and returns the response with the highest upvotes, circumventing the need to context switch to your browser.</p>
+<p>Here&rsquo;s an example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ cht.sh python random int
+<span style="color:#75715e">#  python - Generate random integers between 0 and 9</span>
+#
+<span style="color:#75715e">#  Try:</span>
+from random import randint
+print<span style="color:#f92672">(</span>randint<span style="color:#f92672">(</span>0, 9<span style="color:#f92672">))</span>
+<span style="color:#75715e">#  More info:</span>
+<span style="color:#75715e">#  https://docs.python.org/3/library/random.htmlrandom.randint</span>
+#
+<span style="color:#75715e">#  [kovshenin] [so/q/3996904] [cc by-sa 3.0]</span>
+</code></pre></div><h2 id="story-time">Story Time</h2>
+<p>Since we&rsquo;re (sort of) on the subject, I heard a funny story from a friend recently.</p>
+<p>He complimented a man wearing this t-shirt:
+<img src="images/shell_script_tshirt.jpg" alt=""></p>
+<p>&ldquo;Do you know who I am?&rdquo; Asked the man.</p>
+<p>&ldquo;No,&rdquo; replied my friend.</p>
+<p>&ldquo;I&rsquo;m <a href="https://en.wikipedia.org/wiki/David_Korn_(computer_scientist)">David Korn</a>. I invented the Korn shell. When I say I can replace you with a shell script, I mean it.&rdquo;</p>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>
