@@ -6,10 +6,21 @@
     <description>Recent content on a code to joy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 26 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ELI5: Kubernetes Operators</title>
+      <link>/posts/2020/07/eli5-kubernetes-operators/</link>
+      <pubDate>Sun, 26 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2020/07/eli5-kubernetes-operators/</guid>
+      <description>Introduction I&amp;rsquo;ve been thinking about starting an ELI5 (Explain It Like I&amp;rsquo;m Five) Computer Science blog for a while now. I enjoy simplifying obscure, abstract concepts and making them intuitive and accessible. A wise friend once told me that complexity is easy; simplicity is hard. I hope this post succeeds in that goal.
+If not, I can always stick to my day job.
+The Kubernetes Restaurant You (a user) are seated at a restaurant (Kubernetes).</description>
+    </item>
     
     <item>
       <title>Leveled logs with Cobra and Logrus</title>
