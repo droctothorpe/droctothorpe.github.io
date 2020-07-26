@@ -71,7 +71,7 @@ I wanted to use Logrus, a highly regarded structured logging framework for Go. I
         </item>
         
         <item>
-            <title>Explain in the Membrane</title>
+            <title>Explain in the membrane</title>
             <link>/posts/2019/07/explain-in-the-membrane/</link>
             <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
             
@@ -116,7 +116,7 @@ rsync<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>
 <p><a href="https://cheat.sh/">Cheat.sh</a> is very useful. The command line interface can be installed in <a href="https://github.com/chubin/cheat.sh#installation">two steps</a>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
 chmod +x /usr/local/bin/cht.sh
-</code></pre></div><p>Once installed, just type <code>cheat.sh &lt;any question&gt;</code>. It runs a stack overflow search and returns the response with the highest upvotes, circumventing the need to context switch to your browser.</p>
+</code></pre></div><p>Once installed, just type <code>cht.sh &lt;any question&gt;</code>. It runs a stack overflow search and returns the response with the highest upvotes, circumventing the need to context switch to your browser.</p>
 <p>Here&rsquo;s an example:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ cht.sh python random int
 <span style="color:#75715e">#  python - Generate random integers between 0 and 9</span>
@@ -131,7 +131,7 @@ print<span style="color:#f92672">(</span>randint<span style="color:#f92672">(</s
 </code></pre></div><h2 id="story-time">Story Time</h2>
 <p>Since we&rsquo;re (sort of) on the subject, I heard a funny story from a friend recently.</p>
 <p>He complimented a man wearing this t-shirt:
-<img src="images/shell_script_tshirt.jpg" alt=""></p>
+<img src="/img/shell_script_tshirt.jpg" alt=""></p>
 <p>&ldquo;Do you know who I am?&rdquo; Asked the man.</p>
 <p>&ldquo;No,&rdquo; replied my friend.</p>
 <p>&ldquo;I&rsquo;m <a href="https://en.wikipedia.org/wiki/David_Korn_(computer_scientist)">David Korn</a>. I invented the Korn shell. When I say I can replace you with a shell script, I mean it.&rdquo;</p>
