@@ -7,7 +7,7 @@
 <meta name="author" content="droctothorpe ">
 <meta name="description" content="Introduction I&amp;rsquo;ve been thinking about starting an ELI5 (Explain It Like I&amp;rsquo;m Five) Computer Science blog for a while now. I enjoy simplifying obscure, abstract concepts and making them intuitive and accessible. A wise friend once told me that complexity is easy; simplicity is hard. I hope this post succeeds in that goal.
 If not, I can always stick to my day job.
-The Kubernetes Restaurant Let&amp;rsquo;s say that you (a user) just walked into a restaurant named (Kubernetes)." />
+The Kubernetes Restaurant Let&amp;rsquo;s say that you (a user) walk into a highly-regarded new restaurant named&amp;hellip;Kubernetes." />
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="#252627" />
@@ -46,7 +46,7 @@ The Kubernetes Restaurant Let&amp;rsquo;s say that you (a user) just walked into
 <meta itemprop="name" content="ELI5: Kubernetes Operators">
 <meta itemprop="description" content="Introduction I&rsquo;ve been thinking about starting an ELI5 (Explain It Like I&rsquo;m Five) Computer Science blog for a while now. I enjoy simplifying obscure, abstract concepts and making them intuitive and accessible. A wise friend once told me that complexity is easy; simplicity is hard. I hope this post succeeds in that goal.
 If not, I can always stick to my day job.
-The Kubernetes Restaurant Let&rsquo;s say that you (a user) just walked into a restaurant named (Kubernetes).">
+The Kubernetes Restaurant Let&rsquo;s say that you (a user) walk into a highly-regarded new restaurant named&hellip;Kubernetes.">
 <meta itemprop="datePublished" content="2020-07-26T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-07-26T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="541">
@@ -61,14 +61,14 @@ The Kubernetes Restaurant Let&rsquo;s say that you (a user) just walked into a r
 <meta name="twitter:title" content="ELI5: Kubernetes Operators"/>
 <meta name="twitter:description" content="Introduction I&rsquo;ve been thinking about starting an ELI5 (Explain It Like I&rsquo;m Five) Computer Science blog for a while now. I enjoy simplifying obscure, abstract concepts and making them intuitive and accessible. A wise friend once told me that complexity is easy; simplicity is hard. I hope this post succeeds in that goal.
 If not, I can always stick to my day job.
-The Kubernetes Restaurant Let&rsquo;s say that you (a user) just walked into a restaurant named (Kubernetes)."/>
+The Kubernetes Restaurant Let&rsquo;s say that you (a user) walk into a highly-regarded new restaurant named&hellip;Kubernetes."/>
 
 
 
     <meta property="og:title" content="ELI5: Kubernetes Operators" />
 <meta property="og:description" content="Introduction I&rsquo;ve been thinking about starting an ELI5 (Explain It Like I&rsquo;m Five) Computer Science blog for a while now. I enjoy simplifying obscure, abstract concepts and making them intuitive and accessible. A wise friend once told me that complexity is easy; simplicity is hard. I hope this post succeeds in that goal.
 If not, I can always stick to my day job.
-The Kubernetes Restaurant Let&rsquo;s say that you (a user) just walked into a restaurant named (Kubernetes)." />
+The Kubernetes Restaurant Let&rsquo;s say that you (a user) walk into a highly-regarded new restaurant named&hellip;Kubernetes." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/2020/07/eli5-kubernetes-operators/" />
 <meta property="og:image" content="/"/>
@@ -173,7 +173,7 @@ The Kubernetes Restaurant Let&rsquo;s say that you (a user) just walked into a r
 <p>I&rsquo;ve been thinking about starting an ELI5 (Explain It Like I&rsquo;m Five) Computer Science blog for a while now. I enjoy simplifying obscure, abstract concepts and making them intuitive and accessible. A wise friend once told me that complexity is easy; simplicity is hard. I hope this post succeeds in that goal.</p>
 <p>If not, I can always stick to my day job.</p>
 <h2 id="the-kubernetes-restaurant">The Kubernetes Restaurant</h2>
-<p>Let&rsquo;s say that you (a user) just walked into a restaurant named (<a href="https://kubernetes.io/">Kubernetes</a>). You&rsquo;re seated at a table, given a menu, and, after an appropriate length of time, a charming waiter (the <a href="https://kubernetes.io/docs/concepts/overview/kubernetes-api/">Kubernetes API</a>) takes your order, which consists of several items (<a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/">Kubernetes objects</a>).</p>
+<p>Let&rsquo;s say that you (a user) walk into a highly-regarded new restaurant named&hellip;<a href="https://kubernetes.io/">Kubernetes</a>. You&rsquo;re seated at a table, given a menu, and, after an appropriate length of time, a charming waiter (the <a href="https://kubernetes.io/docs/concepts/overview/kubernetes-api/">Kubernetes API</a>) takes your order, which consists of several items (<a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/">Kubernetes objects</a>).</p>
 <p>The waiter adds your order to the order list (<a href="https://kubernetes.io/docs/concepts/overview/components/#etcd">etcd</a>, the Kubernetes data store).</p>
 <p>A grizzled, curmudgeonly cook (a <a href="https://kubernetes.io/docs/concepts/architecture/controller/">Kubernetes controller</a>) retrieves your order from the order list and prepares the requested dishes.</p>
 <p>Note, you don&rsquo;t actually have to know how the food is prepared. That&rsquo;s the nice thing about restaurants. Sometimes you feel like eating something, but you don&rsquo;t have the time, skills, or knowledge necessary to prepare it yourself. At this restaurant, all you have to do is state your desire <strong>declaratively</strong>, and the cook (the Kubernetes controller) gives you what you want by walking through a sequence of <strong>imperative</strong> steps. That&rsquo;s a big part of the beauty of Kubernetes. Many other solutions are the equivalent of cooking at home. Kubernetes offloads that imperative burden.</p>
