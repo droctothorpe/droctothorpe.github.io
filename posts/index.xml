@@ -16,15 +16,15 @@
             <guid>/posts/2020/07/eli5-kubernetes-operators/</guid>
             <description>Introduction I&amp;rsquo;ve been thinking about starting an ELI5 (Explain It Like I&amp;rsquo;m Five) Computer Science blog for a while now. I enjoy simplifying obscure, abstract concepts and making them intuitive and accessible. A wise friend once told me that complexity is easy; simplicity is hard. I hope this post succeeds in that goal.
 If not, I can always stick to my day job.
-The Kubernetes Restaurant You (a user) are seated at a restaurant (Kubernetes).</description>
+The Kubernetes Restaurant Let&amp;rsquo;s say that you (a user) just walked into a restaurant named (Kubernetes).</description>
             <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>I&rsquo;ve been thinking about starting an ELI5 (Explain It Like I&rsquo;m Five) Computer Science blog for a while now. I enjoy simplifying obscure, abstract concepts and making them intuitive and accessible. A wise friend once told me that complexity is easy; simplicity is hard. I hope this post succeeds in that goal.</p>
 <p>If not, I can always stick to my day job.</p>
 <h2 id="the-kubernetes-restaurant">The Kubernetes Restaurant</h2>
-<p>You (a user) are seated at a restaurant (<a href="https://kubernetes.io/">Kubernetes</a>). You&rsquo;re given a menu and, after an appropriate length of time, a charming waiter (the <a href="https://kubernetes.io/docs/concepts/overview/kubernetes-api/">Kubernetes API</a>), takes your order, which consists of several items (<a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/">Kubernetes objects</a>).</p>
+<p>Let&rsquo;s say that you (a user) just walked into a restaurant named (<a href="https://kubernetes.io/">Kubernetes</a>). You&rsquo;re seated at a table, given a menu, and, after an appropriate length of time, a charming waiter (the <a href="https://kubernetes.io/docs/concepts/overview/kubernetes-api/">Kubernetes API</a>) takes your order, which consists of several items (<a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/">Kubernetes objects</a>).</p>
 <p>The waiter adds your order to the order list (<a href="https://kubernetes.io/docs/concepts/overview/components/#etcd">etcd</a>, the Kubernetes data store).</p>
 <p>A grizzled, curmudgeonly cook (a <a href="https://kubernetes.io/docs/concepts/architecture/controller/">Kubernetes controller</a>) retrieves your order from the order list and prepares the requested dishes.</p>
-<p>Note, you don&rsquo;t actually have to know how the food is prepared. All you need to do is state your desire <strong>declaratively</strong>, and the cook (controller) gives you what you want by walking through a sequence of <strong>imperative</strong> steps. That&rsquo;s part of the beauty of Kubernetes. Many other solutions are the equivalent of cooking at home. If you want to focus on eating, not cooking, it can be helpful to offload that imperative overhead.</p>
+<p>Note, you don&rsquo;t actually have to know how the food is prepared. That&rsquo;s the nice thing about restaurants. Sometimes you feel like eating something, but you don&rsquo;t have the time, skills, or knowledge necessary to prepare it yourself. At this restaurant, all you have to do is state your desire <strong>declaratively</strong>, and the cook (the Kubernetes controller) gives you what you want by walking through a sequence of <strong>imperative</strong> steps. That&rsquo;s a big part of the beauty of Kubernetes. Many other solutions are the equivalent of cooking at home. Kubernetes offloads that imperative burden.</p>
 <h2 id="operators">Operators</h2>
 <p>Let&rsquo;s say you&rsquo;re itching for a specific dish that&rsquo;s not on the menu. Luckily, the owner of the restaurant is open to suggestions from customers (Kubernetes is <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/extend-cluster/">awesomely extensible</a>). You can ask the owner to add an item to the menu (a <a href="https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/">Custom Resource Definition</a>, which creates both a new object type and a new API endpoint). The owner generously agrees.</p>
 <p>Now anyone can place an order for the new item (a <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Custom Resource</a>). The trouble is, the existing cooks (vanilla controllers) don&rsquo;t know how to prepare the new dish, so a new cook (a custom controller) is hired (deployed). When requests come in for the new order, the new cook responds to them by executing a sequence of steps and, in most cases, delegating some work to the original cooks (vanilla controllers).</p>
@@ -39,7 +39,7 @@ The Kubernetes Restaurant You (a user) are seated at a restaurant (Kubernetes).<
 <p>“Oh,” said Phippy, a look of concern on her face, “Uh… look! It’s lunch time! We’d better head home.”</p>
 </blockquote>
 <p><img src="/img/phippy.png" alt=""></p>
-<p>Calm the f#*! down Phipphy.</p>
+<p>Calm down, Phipphy!</p>
 ]]></content>
         </item>
         
