@@ -14,16 +14,16 @@
             <pubDate>Wed, 29 Jul 2020 00:00:00 +0000</pubDate>
             
             <guid>/posts/2020/07/the-coin-change-problem/</guid>
-            <description>The Problem https://leetcode.com/problems/coin-change/
+            <description>The problem https://leetcode.com/problems/coin-change/
  You are given coins of different denominations and a total amount of money amount. Write a function to compute the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
- Explanatory Matrix Given the following input:
+ Explanatory matrix Given the following input:
 coins = 1, 2, 5 amount = 11 We can construct an explanatory matrix.</description>
-            <content type="html"><![CDATA[<h2 id="the-problem">The Problem</h2>
+            <content type="html"><![CDATA[<h2 id="the-problem">The problem</h2>
 <p><a href="https://leetcode.com/problems/coin-change/">https://leetcode.com/problems/coin-change/</a></p>
 <blockquote>
 <p>You are given coins of different denominations and a total amount of money amount. Write a function to compute the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.</p>
 </blockquote>
-<h2 id="explanatory-matrix">Explanatory Matrix</h2>
+<h2 id="explanatory-matrix">Explanatory matrix</h2>
 <p>Given the following input:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">coins <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>
 amount <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span>
@@ -97,8 +97,8 @@ amount <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span
 </table>
 <p>The first column corresponds to the coin denominations. Every subsequent column corresponds to total amount. The table fields indicate how many coins of the corresponding denominations are required to reach the total amount.</p>
 <p>Once this matrix exists, returning an answer is as simple as looking up the intersection of the amount (11) and the denominations (1,2,5) which returns 3.</p>
-<p>The fun part is constructing the matrix.</p>
-<h2 id="a-bottom-up-dynamic-solution">A Bottom-Up Dynamic Solution</h2>
+<p>The trick is knowing how to construct the matrix.</p>
+<h2 id="a-bottom-up-dynamic-solution">A bottom-up dynamic solution</h2>
 <p>The explanatory matrix illustrates the underlying principle, but this ensuing implementation relies on an array instead of a matrix. This is made possible by a reoccuring invocation of the <code>min</code> function.</p>
 <p>The array is initialized with a length of <code>amount + 1</code>, which is 12 given the input. The extra element is required for the 0 column/amount. The remaining elements are initialized to <code>amount + 1</code>, i.e. 12.</p>
 <p>In the word&rsquo;s of Leonid Vulakh:</p>
