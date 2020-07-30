@@ -470,7 +470,7 @@ dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <s
 </tbody>
 </table>
 <p>The algorithm correctly determines that we can reach an amount of 2 with 2 (x 1) coins, but when it iterates the inner loop, the condition evaluates as true; consequently, the algorithm determines that we can actually reach the amount of 2 with just 1 (x 2) coin.</p>
-<p>Essentially, for each amount, we explore progressively higher denominations. If you think about it in terms of the explanatory chart, we move right (with each outer loop), then explore each row in the given column (with each inner loop).</p>
+<p>Essentially, for each amount, we explore progressively higher denominations. If you think about it in terms of the explanatory matrix, we move right (with each outer loop), then explore each row in the given column (with each inner loop).</p>
 <p>The updated list looks like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>]
 </code></pre></div><p>When we complete the remaining iterations, the completed list looks like this:</p>
