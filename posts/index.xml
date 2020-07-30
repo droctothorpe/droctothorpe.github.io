@@ -186,8 +186,8 @@ dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <s
 </tr>
 </tbody>
 </table>
-<p><code>min(dp[i], dp[i - coin] + 1)</code> boils down to <code>min(12, 1)</code>. Since <code>1 &lt; 12</code> (in other news, the sky is blue), we update the value at the first i to 1.</p>
-<p>The updated list looks like this:</p>
+<p><code>min(dp[i], dp[i - coin] + 1)</code> boils down to <code>min(12, 1)</code>. Since <code>1 &lt; 12</code> (in other news, the sky is blue), we update the value at the first index to 1.</p>
+<p>The updated array looks like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>]
 </code></pre></div><p>Things get more interesting in the next outer loop.</p>
 <table>
@@ -251,7 +251,7 @@ dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <s
 <td></td>
 </tr>
 <tr>
-<td>= <code>min(array[2], dp[2 - 2] + 1)</code></td>
+<td>= <code>min(dp[2], dp[2 - 2] + 1)</code></td>
 <td></td>
 </tr>
 <tr>
@@ -259,11 +259,11 @@ dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <s
 <td></td>
 </tr>
 <tr>
-<td>= <code>min(12, 0 + 1)</code></td>
+<td>= <code>min(2, 0 + 1)</code></td>
 <td></td>
 </tr>
 <tr>
-<td>= <code>min(12, 1)</code></td>
+<td>= <code>min(2, 1)</code></td>
 <td></td>
 </tr>
 <tr>
@@ -274,9 +274,12 @@ dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <s
 </table>
 <p>The algorithm correctly determines that we can reach an amount of 2 with 2 (x 1) coins, but when it iterates the inner loop, the condition evaluates as true; consequently, the algorithm determines that we can actually reach the amount of 2 with just 1 (x 2) coin.</p>
 <p>Essentially, for each amount, we explore progressively higher denominations. If you think about it in terms of the explanatory matrix, we move right (with each outer loop), then explore each row in the given column (with each inner loop).</p>
-<p>The updated list looks like this:</p>
+<p>Let&rsquo;s clarify what <code>dp[i - coin] + 1</code> does, because in many ways, it&rsquo;s the heart of this solution.</p>
+<p>For a specified amount, we can lookup how many coins it takes to get that amount minus the current coin, then just add one to the total number of coins (for the current coin).</p>
+<p>In this specific context, we&rsquo;re trying to reach an amount of 2 and the current coin is 2. <code>i - coin</code> equals 0, so we look up 0 in the <code>dp</code> array, which returns 0, then we add 1 to the total number of coins (which represents the 2 coin) to arrive at a total of 1. The call to <code>min</code> helps us prioritize the more efficient way of reaching an amount of 2: it&rsquo;s better to use 1 x 2 coin than 2 x 1 coins.</p>
+<p>The updated array looks like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>]
-</code></pre></div><p>When we complete the remaining iterations, the completed list looks like this:</p>
+</code></pre></div><p>When we complete the remaining iterations, the completed array looks like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
 </code></pre></div><p>Once the array is complete, all we have to do is return <code>dp[amount]</code> to look up the minimum amount of coins required to get to the specified amount.</p>
 <p>The full return statement looks like this:</p>
@@ -285,9 +288,9 @@ dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <s
 <h2 id="complexity">Complexity</h2>
 <h3 id="time">Time</h3>
 <p><code>O(amount * n)</code> where <code>n</code> is the number of coins.</p>
-<p>We have to iterate through the list, which has a length of <code>amount + 1</code> (the 1 can be dropped), and, at each index, we have to iterate through the list of denominations.</p>
+<p>We have to iterate through the array, which has a length of <code>amount + 1</code> (the 1 can be dropped), and, at each index, we have to iterate through the array of denominations.</p>
 <h3 id="space">Space</h3>
-<p><code>0(amount)</code> since the dp list requires <code>amount + 1</code> elements and the 1 is dropped.</p>
+<p><code>0(amount)</code> since the dp array requires <code>amount + 1</code> elements and the 1 is dropped.</p>
 <h2 id="code">Code</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">coinChange</span>(amount, coins):
     <span style="color:#66d9ef">if</span> amount <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
