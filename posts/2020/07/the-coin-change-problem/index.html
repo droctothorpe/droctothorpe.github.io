@@ -51,7 +51,7 @@ coins = 1, 2, 5 amount = 11 We can construct an explanatory matrix." />
 coins = 1, 2, 5 amount = 11 We can construct an explanatory matrix.">
 <meta itemprop="datePublished" content="2020-07-29T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-07-29T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1066">
+<meta itemprop="wordCount" content="1076">
 <meta itemprop="image" content="/"/>
 
 
@@ -316,10 +316,10 @@ dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <s
 </tbody>
 </table>
 <p>Now comes the tricky part. There are two nested loops.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> index <span style="color:#f92672">in</span> range(amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
   <span style="color:#66d9ef">for</span> coin <span style="color:#f92672">in</span> coins:
       <span style="color:#66d9ef">if</span> coin <span style="color:#f92672">&lt;=</span> index:
-          min(dp[index], dp[index <span style="color:#f92672">-</span> coin] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+          dp[i] min(dp[i], dp[i <span style="color:#f92672">-</span> coin] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
 </code></pre></div><p>The fourth line is deceptively complex. The best way to wrap your head around it is to walk through the iterations. Let&rsquo;s do that together.</p>
 <table>
 <thead>
@@ -330,35 +330,35 @@ dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <s
 </thead>
 <tbody>
 <tr>
-<td><code>for index in range(amount + 1)</code></td>
-<td>index = 0</td>
+<td><code>for i in range(amount + 1)</code></td>
+<td>i = 0</td>
 </tr>
 <tr>
 <td><code>for coin in coins</code></td>
 <td>coin = 1</td>
 </tr>
 <tr>
-<td><code>if coin &lt;= index</code></td>
-<td><code>1 &lt;= 0</code> is false so we do not update the value at the 0th index; this holds true for all three denominations</td>
+<td><code>if coin &lt;= i</code></td>
+<td><code>1 &lt;= 0</code> is false so we do not update the value at the 0th i; this holds true for all three denominations</td>
 </tr>
 <tr>
 <td>Next iteration of outer loop</td>
 <td></td>
 </tr>
 <tr>
-<td><code>for index in range(amount + 1)</code></td>
-<td>index = 1 (we&rsquo;ve moved on to the next iteration of the outer loop)</td>
+<td><code>for i in range(amount + 1)</code></td>
+<td>i = 1 (we&rsquo;ve moved on to the next iteration of the outer loop)</td>
 </tr>
 <tr>
 <td><code>for coin in coins</code></td>
 <td>coin = 1</td>
 </tr>
 <tr>
-<td><code>if coin &lt;= index</code></td>
+<td><code>if coin &lt;= i</code></td>
 <td><code>1 &lt;= 1</code> is true</td>
 </tr>
 <tr>
-<td><code>min(dp[index], dp[index - coin] + 1)</code></td>
+<td><code>dp[i] = min(dp[i], dp[i - coin] + 1)</code></td>
 <td></td>
 </tr>
 <tr>
@@ -383,10 +383,10 @@ dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <s
 </tr>
 </tbody>
 </table>
-<p><code>min(dp[index], dp[index - coin] + 1)</code> boils down to <code>min(12, 1)</code>. Since <code>1 &lt; 12</code> (in other news, the sky is blue), we update the value at the first index to 1.</p>
+<p><code>min(dp[i], dp[i - coin] + 1)</code> boils down to <code>min(12, 1)</code>. Since <code>1 &lt; 12</code> (in other news, the sky is blue), we update the value at the first i to 1.</p>
 <p>The updated list looks like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>]
-</code></pre></div><p>Let&rsquo;s walk through the next outer loop.</p>
+</code></pre></div><p>Things get more interesting in the next outer loop.</p>
 <table>
 <thead>
 <tr>
@@ -396,19 +396,19 @@ dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <s
 </thead>
 <tbody>
 <tr>
-<td><code>for index in range(amount + 1)</code></td>
-<td>index = 2</td>
+<td><code>for i in range(amount + 1)</code></td>
+<td>i = 2</td>
 </tr>
 <tr>
 <td><code>for coin in coins</code></td>
 <td>coin = 1</td>
 </tr>
 <tr>
-<td><code>if coin &lt;= index</code></td>
+<td><code>if coin &lt;= i</code></td>
 <td><code>1 &lt;= 2</code> is true</td>
 </tr>
 <tr>
-<td><code>min(dp[index], dp[index - coin] + 1</code>)</td>
+<td><code>dp[i] = min(dp[i], dp[i - coin] + 1</code>)</td>
 <td></td>
 </tr>
 <tr>
@@ -440,11 +440,11 @@ dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <s
 <td>coin = 2</td>
 </tr>
 <tr>
-<td><code>if coin &lt;= index</code></td>
+<td><code>if coin &lt;= i</code></td>
 <td><code>2 &lt;= 2</code> is true</td>
 </tr>
 <tr>
-<td><code>min(dp[index], dp[index - coin] + 1</code>)</td>
+<td><code>dp[i] = min(dp[i], dp[i - coin] + 1</code>)</td>
 <td></td>
 </tr>
 <tr>
@@ -486,7 +486,7 @@ dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <s
 <h3 id="space">Space</h3>
 <p><code>0(amount)</code> since the dp list requires <code>amount + 1</code> elements and the 1 is dropped.</p>
 <h2 id="code">Code</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">coinChange</span>():
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">coinChange</span>(amount, coins):
     <span style="color:#66d9ef">if</span> amount <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
         <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
 
