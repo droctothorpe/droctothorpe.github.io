@@ -99,7 +99,7 @@ amount <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span
 <p>Once this matrix exists, returning an answer is as simple as looking up the intersection of the amount (11) and the denominations (1,2,5) which returns 3.</p>
 <p>The trick is knowing how to construct the matrix.</p>
 <h2 id="a-bottom-up-dynamic-solution">A bottom-up dynamic solution</h2>
-<p>The explanatory matrix illustrates the underlying principle, but this ensuing implementation relies on an array instead of a matrix. This is made possible by a reoccuring invocation of the <code>min</code> function.</p>
+<p>The explanatory matrix illustrates the underlying principle, but the ensuing implementation relies on an array instead of a matrix. This is made possible by a reoccuring invocation of the <code>min</code> function.</p>
 <p>The array is initialized with a length of <code>amount + 1</code>, which is 12 given the input. The extra element is required for the 0 column/amount. The remaining elements are initialized to <code>amount + 1</code>, i.e. 12.</p>
 <p>In the words of Leonid Vulakh:</p>
 <blockquote>
