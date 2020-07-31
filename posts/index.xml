@@ -119,7 +119,7 @@ dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <s
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
   <span style="color:#66d9ef">for</span> coin <span style="color:#f92672">in</span> coins:
       <span style="color:#66d9ef">if</span> coin <span style="color:#f92672">&lt;=</span> index:
-          dp[i] min(dp[i], dp[i <span style="color:#f92672">-</span> coin] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+          dp[i] <span style="color:#f92672">=</span> min(dp[i], dp[i <span style="color:#f92672">-</span> coin] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
 </code></pre></div><p>The fourth line is deceptively complex. The best way to wrap your head around it is to walk through the iterations. Let&rsquo;s do that together.</p>
 <table>
 <thead>
