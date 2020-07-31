@@ -110,7 +110,7 @@ amount <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span
 <span style="color:#66d9ef">if</span> amount <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
   <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
 
-<span style="color:#75715e"># Construct the array.</span>
+<span style="color:#75715e"># Construct the array</span>
 dp <span style="color:#f92672">=</span> [amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> (amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
 dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
 </code></pre></div><p>The resulting array looks like this:</p>
