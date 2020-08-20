@@ -44,7 +44,7 @@ Downloading dependencies After passing the -v flag to the go build command, I no
 <pre><code>RUN --mount=type=cache,target=/root/.cache/go-build \
 go build
 </code></pre><h2 id="how-it-works">How it works</h2>
-<p>In a nutshell, the mount leverages a persistent cache across multiple builds. After an initial, extended build, subsequent builds will leverage the cache and take much less time.</p>
+<p>In a nutshell, the mount implements a cache that persists across multiple builds. After an initial, extended build, subsequent builds leverage the cache and are therefore much more efficient.</p>
 <p>This <em>dramatically</em> reduced my build time.</p>
 <p>Before enabling the cache:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ docker build .
