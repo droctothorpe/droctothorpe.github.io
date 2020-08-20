@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="droctothorpe ">
-<meta name="description" content="The problem I was recently working on an Golang API that imported the Kubernetes client. I implemented Skaffold to streamline the local development cycle, but rebuilds after source code changes consistently took 50 seconds, no matter how small the change. That&amp;rsquo;s unacceptably long, in my opinion, so I set about the task of improving the development cycle by optimizing the Docker build time.
+<meta name="description" content="The problem I was recently working on a Golang API that imported the Kubernetes client. I implemented Skaffold to streamline the local development cycle, but rebuilds after source code changes consistently took 50 seconds, no matter how small the change. That&amp;rsquo;s unacceptably long, in my opinion, so I set about the task of improving the development cycle by optimizing the Docker build time.
 Downloading dependencies After passing the -v flag to the go build command, I noticed that a significant length of time was spent fetching the dependencies." />
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
@@ -43,7 +43,7 @@ Downloading dependencies After passing the -v flag to the go build command, I no
 
 
 <meta itemprop="name" content="Expedite Golang builds in Docker">
-<meta itemprop="description" content="The problem I was recently working on an Golang API that imported the Kubernetes client. I implemented Skaffold to streamline the local development cycle, but rebuilds after source code changes consistently took 50 seconds, no matter how small the change. That&rsquo;s unacceptably long, in my opinion, so I set about the task of improving the development cycle by optimizing the Docker build time.
+<meta itemprop="description" content="The problem I was recently working on a Golang API that imported the Kubernetes client. I implemented Skaffold to streamline the local development cycle, but rebuilds after source code changes consistently took 50 seconds, no matter how small the change. That&rsquo;s unacceptably long, in my opinion, so I set about the task of improving the development cycle by optimizing the Docker build time.
 Downloading dependencies After passing the -v flag to the go build command, I noticed that a significant length of time was spent fetching the dependencies.">
 <meta itemprop="datePublished" content="2020-08-19T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-08-19T00:00:00&#43;00:00" />
@@ -57,13 +57,13 @@ Downloading dependencies After passing the -v flag to the go build command, I no
 <meta name="twitter:image" content="/"/>
 
 <meta name="twitter:title" content="Expedite Golang builds in Docker"/>
-<meta name="twitter:description" content="The problem I was recently working on an Golang API that imported the Kubernetes client. I implemented Skaffold to streamline the local development cycle, but rebuilds after source code changes consistently took 50 seconds, no matter how small the change. That&rsquo;s unacceptably long, in my opinion, so I set about the task of improving the development cycle by optimizing the Docker build time.
+<meta name="twitter:description" content="The problem I was recently working on a Golang API that imported the Kubernetes client. I implemented Skaffold to streamline the local development cycle, but rebuilds after source code changes consistently took 50 seconds, no matter how small the change. That&rsquo;s unacceptably long, in my opinion, so I set about the task of improving the development cycle by optimizing the Docker build time.
 Downloading dependencies After passing the -v flag to the go build command, I noticed that a significant length of time was spent fetching the dependencies."/>
 
 
 
     <meta property="og:title" content="Expedite Golang builds in Docker" />
-<meta property="og:description" content="The problem I was recently working on an Golang API that imported the Kubernetes client. I implemented Skaffold to streamline the local development cycle, but rebuilds after source code changes consistently took 50 seconds, no matter how small the change. That&rsquo;s unacceptably long, in my opinion, so I set about the task of improving the development cycle by optimizing the Docker build time.
+<meta property="og:description" content="The problem I was recently working on a Golang API that imported the Kubernetes client. I implemented Skaffold to streamline the local development cycle, but rebuilds after source code changes consistently took 50 seconds, no matter how small the change. That&rsquo;s unacceptably long, in my opinion, so I set about the task of improving the development cycle by optimizing the Docker build time.
 Downloading dependencies After passing the -v flag to the go build command, I noticed that a significant length of time was spent fetching the dependencies." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/2020/08/expedite-golang-builds-in-docker/" />
@@ -167,7 +167,7 @@ Downloading dependencies After passing the -v flag to the go build command, I no
 
     <div class="post-content">
       <h2 id="the-problem">The problem</h2>
-<p>I was recently working on an Golang API that imported the <a href="https://github.com/kubernetes/client-go">Kubernetes client</a>. I implemented <a href="https://skaffold.dev/">Skaffold</a> to streamline the local development cycle, but rebuilds after source code changes consistently took <strong>50 seconds</strong>, no matter how small the change. That&rsquo;s unacceptably long, in my opinion, so I set about the task of improving the development cycle by optimizing the Docker build time.</p>
+<p>I was recently working on a Golang API that imported the <a href="https://github.com/kubernetes/client-go">Kubernetes client</a>. I implemented <a href="https://skaffold.dev/">Skaffold</a> to streamline the local development cycle, but rebuilds after source code changes consistently took <strong>50 seconds</strong>, no matter how small the change. That&rsquo;s unacceptably long, in my opinion, so I set about the task of improving the development cycle by optimizing the Docker build time.</p>
 <h2 id="downloading-dependencies">Downloading dependencies</h2>
 <p>After passing the <code>-v</code> flag to the <code>go build</code> command, I noticed that a significant length of time was spent fetching the dependencies.</p>
 <p>There are two ways to address this problem.</p>
