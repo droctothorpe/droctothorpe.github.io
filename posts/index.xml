@@ -5,8 +5,57 @@
         <description>Recent content in Posts on a code to joy</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 29 Jul 2020 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 19 Aug 2020 00:00:00 +0000</lastBuildDate>
         <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Expedite Golang builds in Docker</title>
+            <link>/posts/2020/08/expedite-golang-builds-in-docker/</link>
+            <pubDate>Wed, 19 Aug 2020 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/2020/08/expedite-golang-builds-in-docker/</guid>
+            <description>The problem I was recently working on an Golang API that imported the Kubernetes client. I implemented Skaffold to streamline the local development cycle, but rebuilds after source code changes consistently took 50 seconds, no matter how small the change. That&amp;rsquo;s unacceptably long, in my opinion, so I set about the task of improving the development cycle by optimizing the Docker build time.
+Downloading dependencies After passing the -v flag to the go build command, I noticed that a significant length of time was spent fetching the dependencies.</description>
+            <content type="html"><![CDATA[<h2 id="the-problem">The problem</h2>
+<p>I was recently working on an Golang API that imported the <a href="https://github.com/kubernetes/client-go">Kubernetes client</a>. I implemented <a href="https://skaffold.dev/">Skaffold</a> to streamline the local development cycle, but rebuilds after source code changes consistently took <strong>50 seconds</strong>, no matter how small the change. That&rsquo;s unacceptably long, in my opinion, so I set about the task of improving the development cycle by optimizing the Docker build time.</p>
+<h2 id="downloading-dependencies">Downloading dependencies</h2>
+<p>After passing the <code>-v</code> flag to the <code>go build</code> command, I noticed that a significant length of time was spent fetching the dependencies.</p>
+<p>There are two ways to address this problem.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Docker" data-lang="Docker"><span style="color:#66d9ef">COPY</span> go.mod go.sum .<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> go mod download<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>...<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . .<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> go build .<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>In a nutshell, by copying <code>go.mod</code> and <code>go.sum</code> then running <code>go mod download</code>, you&rsquo;re consolidating the dependency retrieval into a standalone Docker image layer which gets cached. Subsequent rebuilds will leverage the cache, except in the comparatively rare exception that you make changes to <code>go.mod</code> or <code>go.sum</code>.</p>
+<p>If you&rsquo;re vendoring, committing your <code>vendor</code> directory to source, and using Go v1.14 or greater, you can use the vendor directory instead of re-downloading your dependencies:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Docker" data-lang="Docker"><span style="color:#66d9ef">COPY</span> . . <span style="color:#75715e"># Including the vendor directory</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> GO111MODULE<span style="color:#f92672">=</span>on
+<span style="color:#66d9ef">RUN</span> go build .<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h2 id="compilation">Compilation</h2>
+<p>This improved my build time by about 10-15 seconds, but it was still unacceptably long.</p>
+<p>The problem was that my dependencies (and their dependencies) were pretty large in scope and took a long time to compile.</p>
+<h2 id="buildkit-to-the-rescue">BuildKit to the rescue</h2>
+<p>I explored a few options, including compiling only the dependencies in a Docker image layer and mounting my GOCACHE to the build, but the solution turned out to be pleasantly simple.</p>
+<p>Enable <a href="https://docs.docker.com/develop/develop-images/build_enhancements/">BuildKit</a> by running:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export DOCKER_BUILDKIT<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</code></pre></div><p>and adding:</p>
+<pre><code># syntax = docker/dockerfile:1-experimental
+</code></pre><p>to the top of your Dockerfile, then preface your <code>go build</code> command in the Dockerfile as follows:</p>
+<pre><code>RUN --mount=type=cache,target=/root/.cache/go-build \
+go build
+</code></pre><h2 id="how-it-works">How it works</h2>
+<p>In a nutshell, the mount leverages a persistent cache across multiple builds. After an initial, extended build, subsequent builds will leverage the cache and take much less time.</p>
+<p>This <em>dramatically</em> reduced my build time.</p>
+<p>Before enabling the cache:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ docker build .
+<span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Building 47.8s <span style="color:#f92672">(</span>15/15<span style="color:#f92672">)</span> FINISHED 
+</code></pre></div><p>After enabling the cache:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ docker build .
+<span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Building 7.6s <span style="color:#f92672">(</span>15/15<span style="color:#f92672">)</span> FINISHED 
+</code></pre></div><p>That&rsquo;s a <strong>40.2</strong> second reduction in build time. Not too shabby!</p>
+<p>Side note, I&rsquo;m using a <a href="https://docs.docker.com/develop/develop-images/multistage-build/">multistage build</a>, but this advice is equally applicable regardless of stage count.</p>
+]]></content>
+        </item>
         
         <item>
             <title>The coin change problem</title>
