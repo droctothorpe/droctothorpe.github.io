@@ -5,8 +5,116 @@
         <description>Recent content in Posts on a code to joy</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 19 Aug 2020 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 23 Dec 2020 16:54:37 -0500</lastBuildDate>
         <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Unconscious Algorithms</title>
+            <link>/posts/2020/12/unconscious-algorithms/</link>
+            <pubDate>Wed, 23 Dec 2020 16:54:37 -0500</pubDate>
+            
+            <guid>/posts/2020/12/unconscious-algorithms/</guid>
+            <description>The goal of this article is to convey an approach to solving data structure and algorithm problems. My hope is that it helps you in a situation where you might otherwise draw a blank.
+I want to start by stating an obvious but important truth: your brain is amazing. You are constantly and rapidly solving unimaginably complex problems that make even the most challenging FAANG whiteboard problem look like a stroll in the park.</description>
+            <content type="html"><![CDATA[<p>The goal of this article is to convey an approach to solving data structure and
+algorithm problems. My hope is that it helps you in a situation where you might
+otherwise draw a blank.</p>
+<p>I want to start by stating an obvious but important truth: your brain is
+<strong>amazing</strong>. You are constantly and rapidly solving unimaginably complex problems
+that make even the most challenging FAANG whiteboard problem look like a stroll
+in the park.</p>
+<blockquote>
+<p>“But the gap between robots in imagination and in reality is my starting
+point, for it shows the first step we must take in knowing ourselves:
+appreciating the fantastically complex design behind feats of mental life we
+take for granted. The reason there are no humanlike robots is not that the
+very idea of a mechanical mind is misguided. It is that the engineering
+problems that we humans solve as we see and walk and plan and make it through
+the day are far more challenging than landing on the moon or sequencing the
+human genome. Nature, once again, has found ingenious solutions that human
+engineers cannot yet duplicate. When Hamlet says, “What a piece of work is a
+man! how noble in reason! how infinite in faculty! in form and moving how
+express and admirable!” we should direct our awe not at Shakespeare or Mozart
+or Einstein or Kareem Abdul-Jabbar but at a four-year old carrying out a
+request to put a toy on a shelf.”</p>
+</blockquote>
+<p>Source: <em>How the Mind Works</em> by Steven Pinker.</p>
+<p>Pinker goes on to say, “The faculty with which we ponder the world has no
+ability to peer inside itself or our other faculties to see what makes them
+tick.” With all due respect, this claim is hyperbolic.</p>
+<p>We are all students of the mind &ndash; simultaneously scientist and lab rat. When we
+make consciousness the subject of consciousness, we can pull back the veil and
+bear witness to the built-in algorithms that are otherwise taken for granted.</p>
+<p>This process can be leveraged to help demystify data structure and algorithm
+questions. Let&rsquo;s walk through a specific problem to illustrate the concept.</p>
+<blockquote>
+<p>Implement strStr().</p>
+<p>Return the index of the first occurrence of needle in haystack, or -1 if needle
+is not part of haystack.</p>
+<p>For the purpose of this problem, we will return 0 when needle is an empty
+string.</p>
+</blockquote>
+<p>Source: <a href="https://leetcode.com/problems/implement-strstr/">https://leetcode.com/problems/implement-strstr/</a></p>
+<p>First and foremost, you need example input. If it&rsquo;s not provided by default,
+either ask for it or define your own inputs.</p>
+<p>In this case, Leetcode provides us with example input:</p>
+<pre><code>Example 1:
+Input: haystack = &quot;hello&quot;, needle = &quot;ll&quot;
+Output: 2
+</code></pre><p><strong>Resist</strong> the temptation to write code.</p>
+<p>This stage is not about coding, it&rsquo;s about observing and deconstructing how your
+mind arrives at a solution.</p>
+<p>Can you determine, at a glance, whether or not &ldquo;hello&rdquo; contains &ldquo;ll&rdquo;? Of course
+you can. It does. This conclusion seems to materialize instantaneously, doesn&rsquo;t
+it? It also seems to require little to no effort. Take a moment here to
+appreciate just how effective your mind is at this task.</p>
+<p>The operative question is: how? More specifically, how <strong>does</strong> your mind solve it?
+The crux of this article is that you should focus on that question as opposed
+to the categorically different question of: how <strong>should</strong> you solve this?</p>
+<p>When I slow down and observe how my mind tackles this problem, I arrive at the
+following deconstruction. It seems as if my mind identifies the length of the
+needle, then iterates through the haystack, making needle-sized chunks as it
+goes, comparing each chunk to the needle for equality.</p>
+<p>Practically speaking, it looks something like this:</p>
+<p>Does &ldquo;he&rdquo; equal &ldquo;ll&rdquo;? No.</p>
+<p>Does &ldquo;el&rdquo; equal &ldquo;ll&rdquo;? No.</p>
+<p>Does &ldquo;ll&rdquo; equal &ldquo;ll&rdquo;? Yes!</p>
+<p>Now it&rsquo;s just a matter of identifying the matching index, which is 2.</p>
+<p>Simple enough, right?</p>
+<p>We can probably dissect it further using three pointers but for the sake of
+brevity I&rsquo;ll sidestep the added complexity.</p>
+<p>Now that we have a proposed explanation for how the mind solves this problem,
+translating it into code is comparatively trivial.</p>
+<p>Avoid premature optimization at this stage. Sometimes, the mind&rsquo;s approach is
+efficient; other times it is inefficient and you can improve on it. Either way,
+defer optimization. First make it work, then make it better. An inefficient
+solution is better than no solution.</p>
+<p>Here is a pretty simple implementation of the process outlined above in Python.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">strStr</span>(self, haystack: str, needle: str) <span style="color:#f92672">-&gt;</span> int:
+        haystack_length <span style="color:#f92672">=</span> len(haystack) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+        needle_length <span style="color:#f92672">=</span> len(needle) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+        i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+
+        <span style="color:#66d9ef">while</span> i <span style="color:#f92672">&lt;=</span> haystack_length <span style="color:#f92672">-</span> needle_length: 
+            <span style="color:#66d9ef">if</span> haystack[i:i <span style="color:#f92672">+</span> needle_length <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> needle:
+                <span style="color:#66d9ef">return</span> i
+            i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+            
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</code></pre></div><p>In a nutshell, this implementation starts at the first element of haystack,
+creates a needle-sized slice, and compares the slice to the needle for equality.
+If equality is confirmed, it returns the index. If not, the index is iterated
+and the slice and comparison is repeated starting from the next element. This
+process continues until an equality check succeeds or the index reaches
+<code>haystack_length - needle_length</code>, since any slice past that point will not be
+long enough to match the needle in size.</p>
+<p>The time and space complexity are both O(n).</p>
+<p>I hope you found this helpful. Remember, your brain is awesome. If you can solve
+a problem without code, you already know the solution, it&rsquo;s just a matter of
+unpacking it.</p>
+]]></content>
+        </item>
         
         <item>
             <title>Expedite Golang builds in Docker</title>

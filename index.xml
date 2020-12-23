@@ -6,10 +6,20 @@
     <description>Recent content on a code to joy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 23 Dec 2020 16:54:37 -0500</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Unconscious Algorithms</title>
+      <link>/posts/2020/12/unconscious-algorithms/</link>
+      <pubDate>Wed, 23 Dec 2020 16:54:37 -0500</pubDate>
+      
+      <guid>/posts/2020/12/unconscious-algorithms/</guid>
+      <description>The goal of this article is to convey an approach to solving data structure and algorithm problems. My hope is that it helps you in a situation where you might otherwise draw a blank.
+I want to start by stating an obvious but important truth: your brain is amazing. You are constantly and rapidly solving unimaginably complex problems that make even the most challenging FAANG whiteboard problem look like a stroll in the park.</description>
+    </item>
     
     <item>
       <title>Expedite Golang builds in Docker</title>
