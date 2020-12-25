@@ -18,7 +18,7 @@
       
       <guid>/posts/2020/12/unconscious-algorithms/</guid>
       <description>The goal of this article is to convey an approach to solving data structure and algorithm problems. My hope is that it helps you in a situation where you might otherwise draw a blank.
-I want to start by stating an obvious but important truth: your brain is amazing. You are constantly and rapidly solving unimaginably complex problems that make even the most challenging FAANG whiteboard problem look like a stroll in the park.</description>
+I want to start by stating an obvious but important truth: your brain is amazing. You are constantly and rapidly solving unimaginably complex problems that make even the most challenging FAANG whiteboard interview look like a stroll in the park.</description>
     </item>
     
     <item>
@@ -81,11 +81,13 @@ explain () { if [ &amp;#34;$#&amp;#34; -eq 0 ] then while read -p &amp;#34;Comma
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
-      <description>Hi.
+      <description>Hello.
 I&amp;rsquo;m Alex.
-Like a button-mashing younger sibling who kicks butt at a fighting game without actually knowing how to play, when I press keys at random, good things occassionally happen. Given enough time, even monkeys can write Shakespeare.
+I write code and ideas and stuff, allegedly.
 I work on a platform for distributed ML at Capital One&amp;rsquo;s Center for Machine Learning.
-I live in the NYC metro area with my wife (I can&amp;rsquo;t read &amp;ldquo;my wife&amp;rdquo; in anything other than Borat voice) and two awesome pets kiddoes.</description>
+I live in the NYC metro area with my wife and three kiddoes.
+You can find me on:
+ Github LinkedIn  You can contact me via email.</description>
     </item>
     
   </channel>
