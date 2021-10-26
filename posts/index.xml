@@ -5,8 +5,58 @@
         <description>Recent content in Posts on a code to joy</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 23 Dec 2020 16:54:37 -0500</lastBuildDate>
+        <lastBuildDate>Mon, 25 Oct 2021 00:00:00 +0000</lastBuildDate>
         <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>A tail unto lions</title>
+            <link>/posts/2021/10/a-tail-unto-lions/</link>
+            <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/2021/10/a-tail-unto-lions/</guid>
+            <description>&amp;hellip;be a tail unto lions, and not a head unto foxes.
+&amp;ndash; Ethics of our Fathers, 4:15
+ I heard a remarkable anecdote on a podcast the other day.
+ Admired for her beauty, Jennie Jerome (Winston Churchill’s mother) glided through the loftiest social circles in Great Britain. Once, on consecutive nights, Ms. Jerome dined with England’s premier politicians: Prime Minister Benjamin Disraeli and his chief rival, William Gladstone. When questioned about her impressions of the two men, Ms.</description>
+            <content type="html"><![CDATA[<blockquote>
+<p>&hellip;be a tail unto lions, and not a head unto foxes.</p>
+<p>&ndash; Ethics of our Fathers, 4:15</p>
+</blockquote>
+<p>I heard a remarkable anecdote on a podcast the other day.</p>
+<blockquote>
+<p>Admired for her beauty, Jennie Jerome (Winston Churchill’s mother) glided
+through the loftiest social circles in Great Britain. Once, on consecutive
+nights, Ms. Jerome dined with England’s premier politicians: Prime Minister
+Benjamin Disraeli and his chief rival, William Gladstone. When questioned
+about her impressions of the two men, Ms. Jerome made the following
+observation:</p>
+<p>“When I left the dining room after sitting next to Gladstone, I thought he was
+the cleverest man in England. But when I sat next to Disraeli I left feeling
+that I was the cleverest woman.”</p>
+</blockquote>
+<p>Several days after hearing this, I participated in a meeting with two managers who could not
+more effectively exemplify the contrast between these two approaches. Since
+then, I&rsquo;ve made a concerted effort to adopt the Disraeli approach, and it&rsquo;s been
+nothing short of revelatory.</p>
+<p>For example, in a recent meeting, two brilliant teammates engaged in a prolonged
+discussion about whether to write an API in Python or Golang. They both provided
+excellent justifications despite taking opposing and increasingly entrenched
+positions. Finally, one of them addressed me as a resident senior engineer and
+asked what I thought about the Python vs Go debate.</p>
+<p>&ldquo;I could go either way because I&rsquo;m equally terrible at both,&rdquo; I
+replied.</p>
+<p>Everyone laughed and I could feel the tension evaporate.</p>
+<p>It feels good to play that kind of role on a team. It feels good to promote down
+to earth collaboration, to wear my ignorance on my sleeve and demonstrate, by
+example, that it&rsquo;s okay to not know things. It feels good to work hard, but
+laugh, particularly at myself. At the end of the day, if we&rsquo;re not having fun,
+then we&rsquo;re doing something wrong.</p>
+<p>I&rsquo;ve worked with people who have made me feel brilliant and people who have made
+me feel dumb, so I know what it&rsquo;s like to be on both sides of that equation. I&rsquo;d
+like to be the kind of person who makes others feel brilliant.</p>
+<p>Being a dipstick helps.</p>
+]]></content>
+        </item>
         
         <item>
             <title>Unconscious Algorithms</title>
@@ -109,7 +159,9 @@ and the slice and comparison is repeated starting from the next element. This
 process continues until an equality check succeeds or the index reaches
 <code>haystack_length - needle_length</code>, since any slice past that point will not be
 long enough to match the needle in size.</p>
-<p>The time and space complexity are both O(n).</p>
+<p>The time complexity is O(n).</p>
+<p>Space complexity is a bit more complicated. In the worst case
+(<code>strStr(&quot;abcabcdef&quot;, &quot;def&quot;</code>), I believe it&rsquo;s n^2.</p>
 <p>I hope you found this helpful. Remember: your brain is amazing. If you can solve
 a problem without code, you already know the solution, it&rsquo;s just a matter of
 unboxing it.</p>

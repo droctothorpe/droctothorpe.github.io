@@ -47,7 +47,7 @@ I want to start by stating an obvious but important truth: your brain is amazing
 I want to start by stating an obvious but important truth: your brain is amazing. You are constantly and rapidly solving unimaginably complex problems that make even the most challenging FAANG whiteboard interview look like a stroll in the park.">
 <meta itemprop="datePublished" content="2020-12-23T16:54:37-05:00" />
 <meta itemprop="dateModified" content="2020-12-23T16:54:37-05:00" />
-<meta itemprop="wordCount" content="899">
+<meta itemprop="wordCount" content="913">
 <meta itemprop="image" content="/"/>
 
 
@@ -245,7 +245,9 @@ and the slice and comparison is repeated starting from the next element. This
 process continues until an equality check succeeds or the index reaches
 <code>haystack_length - needle_length</code>, since any slice past that point will not be
 long enough to match the needle in size.</p>
-<p>The time and space complexity are both O(n).</p>
+<p>The time complexity is O(n).</p>
+<p>Space complexity is a bit more complicated. In the worst case
+(<code>strStr(&quot;abcabcdef&quot;, &quot;def&quot;</code>), I believe it&rsquo;s n^2.</p>
 <p>I hope you found this helpful. Remember: your brain is amazing. If you can solve
 a problem without code, you already know the solution, it&rsquo;s just a matter of
 unboxing it.</p>
@@ -281,7 +283,7 @@ unboxing it.</p>
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2020</span>
+            <span>&copy; 2021</span>
             
             
             <span><a href="/about">droctothorpe</a></span>
