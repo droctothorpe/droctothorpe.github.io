@@ -6,10 +6,16 @@
     <description>Recent content on a code to joy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Oct 2021 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Tue, 24 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>In Obscurity</title>
+      <link>/posts/2022/05/in-obscurity/</link>
+      <pubDate>Tue, 24 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2022/05/in-obscurity/</guid>
+      <description>I just read a delightful anecdote about Isaac Newton in A Short History of Nearly Everything by Bill Bryson (which is refreshingly irreverent):
+ As a student, frustrated by the limitations of conventional mathematics, he [Newton] invented an entirely new form, the calculus, but then told no one about it for twenty-seven years. In like manner, he did work in optics that transformed our understanding of light and laid the foundation for the science of spectroscopy, and again chose not to share the results for three decades.</description>
+    </item>
     
     <item>
       <title>A tail unto lions</title>
@@ -84,7 +90,7 @@ I wanted to use Logrus, a highly regarded structured logging framework for Go. I
       <guid>/posts/2019/07/explain-in-the-membrane/</guid>
       <description>Explainshell I stumbled into this brilliant tidbit in a post by LostCharacter on ycombinator.
 Here&amp;rsquo;s the actual code:
-explain () { if [ &amp;#34;$#&amp;#34; -eq 0 ] then while read -p &amp;#34;Command: &amp;#34; cmd do curl -Gs &amp;#34;https://www.mankier.com/api/explain/?cols=&amp;#34;$(tput cols) --data-urlencode &amp;#34;q=$cmd&amp;#34; done echo &amp;#34;Bye!&amp;#34; elif [ &amp;#34;$#&amp;#34; -eq 1 ] then curl -Gs &amp;#34;https://www.mankier.com/api/explain/?cols=&amp;#34;$(tput cols) --data-urlencode &amp;#34;q=$1&amp;#34; else echo &amp;#34;Usage&amp;#34; echo &amp;#34;explain interactive mode.&amp;#34; echo &amp;#34;explain &amp;#39;cmd -o | ...&amp;#39; one quoted command to explain it.</description>
+explain () {  if [ &amp;#34;$#&amp;#34; -eq 0 ]  then  while read -p &amp;#34;Command: &amp;#34; cmd  do  curl -Gs &amp;#34;https://www.mankier.com/api/explain/?cols=&amp;#34;$(tput cols) --data-urlencode &amp;#34;q=$cmd&amp;#34;  done  echo &amp;#34;Bye!&amp;#34;  elif [ &amp;#34;$#&amp;#34; -eq 1 ]  then  curl -Gs &amp;#34;https://www.mankier.com/api/explain/?cols=&amp;#34;$(tput cols) --data-urlencode &amp;#34;q=$1&amp;#34;  else  echo &amp;#34;Usage&amp;#34;  echo &amp;#34;explain interactive mode.</description>
     </item>
     
     <item>
