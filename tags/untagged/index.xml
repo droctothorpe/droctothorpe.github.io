@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>untagged on a code to joy</title>
+    <link>/tags/untagged/</link>
+    <description>Recent content in untagged on a code to joy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 17 Dec 2022 22:35:57 -0500</lastBuildDate>
+    
+	<atom:link href="/tags/untagged/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Wpaytts</title>
+      <link>/posts/2022/12/wpaytts/</link>
+      <pubDate>Sat, 17 Dec 2022 22:35:57 -0500</pubDate>
+      
+      <guid>/posts/2022/12/wpaytts/</guid>
+      <description>I attend too many a lot of demos.
+Over the years, I&amp;rsquo;ve observed that engineers have a tendency to jump into complex solutions without providing sufficient context first.
+When confronted with this approach, audiences often disengage, especially people leaders who can be several steps removed from technical implementation details.
+It&amp;rsquo;s frustrating to see a great solution not get the reaction it deserves.
+Here&amp;rsquo;s the thing. Generally speaking, people have a low tolerance for complexity.</description>
+    </item>
+    
+  </channel>
+</rss>

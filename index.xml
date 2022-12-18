@@ -6,7 +6,24 @@
     <description>Recent content on a code to joy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Dec 2022 22:35:57 -0500</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Wpaytts</title>
+      <link>/posts/2022/12/wpaytts/</link>
+      <pubDate>Sat, 17 Dec 2022 22:35:57 -0500</pubDate>
+      
+      <guid>/posts/2022/12/wpaytts/</guid>
+      <description>I attend too many a lot of demos.
+Over the years, I&amp;rsquo;ve observed that engineers have a tendency to jump into complex solutions without providing sufficient context first.
+When confronted with this approach, audiences often disengage, especially people leaders who can be several steps removed from technical implementation details.
+It&amp;rsquo;s frustrating to see a great solution not get the reaction it deserves.
+Here&amp;rsquo;s the thing. Generally speaking, people have a low tolerance for complexity.</description>
+    </item>
+    
     <item>
       <title>In Obscurity</title>
       <link>/posts/2022/05/in-obscurity/</link>
@@ -90,7 +107,7 @@ I wanted to use Logrus, a highly regarded structured logging framework for Go. I
       <guid>/posts/2019/07/explain-in-the-membrane/</guid>
       <description>Explainshell I stumbled into this brilliant tidbit in a post by LostCharacter on ycombinator.
 Here&amp;rsquo;s the actual code:
-explain () {  if [ &amp;#34;$#&amp;#34; -eq 0 ]  then  while read -p &amp;#34;Command: &amp;#34; cmd  do  curl -Gs &amp;#34;https://www.mankier.com/api/explain/?cols=&amp;#34;$(tput cols) --data-urlencode &amp;#34;q=$cmd&amp;#34;  done  echo &amp;#34;Bye!&amp;#34;  elif [ &amp;#34;$#&amp;#34; -eq 1 ]  then  curl -Gs &amp;#34;https://www.mankier.com/api/explain/?cols=&amp;#34;$(tput cols) --data-urlencode &amp;#34;q=$1&amp;#34;  else  echo &amp;#34;Usage&amp;#34;  echo &amp;#34;explain interactive mode.</description>
+explain () { if [ &amp;#34;$#&amp;#34; -eq 0 ] then while read -p &amp;#34;Command: &amp;#34; cmd do curl -Gs &amp;#34;https://www.mankier.com/api/explain/?cols=&amp;#34;$(tput cols) --data-urlencode &amp;#34;q=$cmd&amp;#34; done echo &amp;#34;Bye!&amp;#34; elif [ &amp;#34;$#&amp;#34; -eq 1 ] then curl -Gs &amp;#34;https://www.mankier.com/api/explain/?cols=&amp;#34;$(tput cols) --data-urlencode &amp;#34;q=$1&amp;#34; else echo &amp;#34;Usage&amp;#34; echo &amp;#34;explain interactive mode.&amp;#34; echo &amp;#34;explain &amp;#39;cmd -o | ...&amp;#39; one quoted command to explain it.</description>
     </item>
     
     <item>
