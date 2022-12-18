@@ -48,9 +48,14 @@ coins = 1, 2, 5 amount = 11 We can construct an explanatory matrix." />
 <meta itemprop="description" content="The problem https://leetcode.com/problems/coin-change/
  You are given coins of different denominations and a total amount of money. Write a function to compute the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
  Explanatory matrix Given the following input:
-coins = 1, 2, 5 amount = 11 We can construct an explanatory matrix."><meta itemprop="datePublished" content="2020-07-29T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2020-07-29T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1199"><meta itemprop="image" content="/"/>
+coins = 1, 2, 5 amount = 11 We can construct an explanatory matrix.">
+<meta itemprop="datePublished" content="2020-07-29T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-07-29T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1199">
+<meta itemprop="image" content="/"/>
+
+
+
 <meta itemprop="keywords" content="leetcode,data structures and algorithms," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/"/>
@@ -69,10 +74,10 @@ coins = 1, 2, 5 amount = 11 We can construct an explanatory matrix."/>
  Explanatory matrix Given the following input:
 coins = 1, 2, 5 amount = 11 We can construct an explanatory matrix." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/2020/07/the-coin-change-problem/" /><meta property="og:image" content="/"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="/posts/2020/07/the-coin-change-problem/" />
+<meta property="og:image" content="/"/>
 <meta property="article:published_time" content="2020-07-29T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-07-29T00:00:00+00:00" />
-
 
 
 
@@ -182,9 +187,9 @@ coins = 1, 2, 5 amount = 11 We can construct an explanatory matrix." />
 </blockquote>
 <h2 id="explanatory-matrix">Explanatory matrix</h2>
 <p>Given the following input:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>coins <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>
-</span></span><span style="display:flex;"><span>amount <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span>
-</span></span></code></pre></div><p>We can construct an explanatory matrix.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">coins <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>
+amount <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span>
+</code></pre></div><p>We can construct an explanatory matrix.</p>
 <table>
 <thead>
 <tr>
@@ -262,21 +267,21 @@ coins = 1, 2, 5 amount = 11 We can construct an explanatory matrix." />
 <p>For you, this is infinity.</p>
 </blockquote>
 <p>Since no value will ever reach or exceed 12, it will never be returned in the ensuing <code>min</code> invocations. 0 and -1 do not work as initialization values, because they will always be the minimum. <code>None</code> doesn&rsquo;t work because it cannot be compared to an integer.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Guardian against the edge case of amount being 0</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> amount <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Construct the array</span>
-</span></span><span style="display:flex;"><span>dp <span style="color:#f92672">=</span> [amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> (amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-</span></span></code></pre></div><p>The resulting array looks like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>]
-</span></span></code></pre></div><p>Now comes the tricky part. There are two nested loops.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> coin <span style="color:#f92672">in</span> coins:
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> coin <span style="color:#f92672">&lt;=</span> index:
-</span></span><span style="display:flex;"><span>          dp[i] <span style="color:#f92672">=</span> min(dp[i], dp[i <span style="color:#f92672">-</span> coin] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
-</span></span></code></pre></div><p>The fourth line is deceptively complex. The best way to wrap your head around it is to walk through the iterations. Let&rsquo;s do that together.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Guardian against the edge case of amount being 0</span>
+<span style="color:#66d9ef">if</span> amount <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+
+<span style="color:#75715e"># Construct the array</span>
+dp <span style="color:#f92672">=</span> [amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> (amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</code></pre></div><p>The resulting array looks like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>]
+</code></pre></div><p>Now comes the tricky part. There are two nested loops.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+  <span style="color:#66d9ef">for</span> coin <span style="color:#f92672">in</span> coins:
+      <span style="color:#66d9ef">if</span> coin <span style="color:#f92672">&lt;=</span> index:
+          dp[i] <span style="color:#f92672">=</span> min(dp[i], dp[i <span style="color:#f92672">-</span> coin] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</code></pre></div><p>The fourth line is deceptively complex. The best way to wrap your head around it is to walk through the iterations. Let&rsquo;s do that together.</p>
 <table>
 <thead>
 <tr>
@@ -341,8 +346,8 @@ coins = 1, 2, 5 amount = 11 We can construct an explanatory matrix." />
 </table>
 <p><code>min(dp[i], dp[i - coin] + 1)</code> boils down to <code>min(12, 1)</code>. Since <code>1 &lt; 12</code> (in other news, the sky is blue), we update the value at the first index to 1.</p>
 <p>The updated array looks like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>]
-</span></span></code></pre></div><p>Things get more interesting in the next outer loop.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>]
+</code></pre></div><p>Things get more interesting in the next outer loop.</p>
 <table>
 <thead>
 <tr>
@@ -443,13 +448,13 @@ coins = 1, 2, 5 amount = 11 We can construct an explanatory matrix." />
 <p>For a specified amount, we can lookup how many coins it takes to get that amount minus the current coin, then just add one to the total number of coins (for the current coin).</p>
 <p>In this specific context, we&rsquo;re trying to reach an amount of 2 and the current coin is 2. <code>i - coin</code> equals 0, so we look up 0 in the <code>dp</code> array, which returns 0, then we add 1 to the total number of coins (which represents the 2 coin) to arrive at a total of 1. The call to <code>min</code> helps us prioritize the more efficient way of reaching an amount of 2: it&rsquo;s better to use 1 x 2 coin than 2 x 1 coins.</p>
 <p>The updated array looks like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>]
-</span></span></code></pre></div><p>When we complete the remaining iterations, the completed array looks like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
-</span></span></code></pre></div><p>Once the array is complete, all we have to do is return <code>dp[amount]</code> to look up the minimum amount of coins required to get to the specified amount.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>]
+</code></pre></div><p>When we complete the remaining iterations, the completed array looks like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+</code></pre></div><p>Once the array is complete, all we have to do is return <code>dp[amount]</code> to look up the minimum amount of coins required to get to the specified amount.</p>
 <p>The full return statement looks like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> dp[amount] <span style="color:#66d9ef">if</span> dp[amount] <span style="color:#f92672">&lt;=</span> amount <span style="color:#66d9ef">else</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
-</span></span></code></pre></div><p>The <code>if dp[amount] &lt;= amount else -1</code> is required in case no amount of coins can create the specified amount, which would indicate that the denominations are not canonical.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">return</span> dp[amount] <span style="color:#66d9ef">if</span> dp[amount] <span style="color:#f92672">&lt;=</span> amount <span style="color:#66d9ef">else</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</code></pre></div><p>The <code>if dp[amount] &lt;= amount else -1</code> is required in case no amount of coins can create the specified amount, which would indicate that the denominations are not canonical.</p>
 <h2 id="complexity">Complexity</h2>
 <h3 id="time">Time</h3>
 <p><code>O(amount * n)</code> where <code>n</code> is the number of coins.</p>
@@ -457,19 +462,19 @@ coins = 1, 2, 5 amount = 11 We can construct an explanatory matrix." />
 <h3 id="space">Space</h3>
 <p><code>0(amount)</code> since the dp array requires <code>amount + 1</code> elements and the 1 is dropped.</p>
 <h2 id="code">Code</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">coinChange</span>(amount, coins):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> amount <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    dp <span style="color:#f92672">=</span> [amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> (amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> coin <span style="color:#f92672">in</span> coins:
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> coin <span style="color:#f92672">&lt;=</span> i:
-</span></span><span style="display:flex;"><span>                dp[i] <span style="color:#f92672">=</span> min(dp[i], dp[i <span style="color:#f92672">-</span> coin] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> dp[amount] <span style="color:#66d9ef">if</span> dp[amount] <span style="color:#f92672">&lt;=</span> amount <span style="color:#66d9ef">else</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
-</span></span></code></pre></div><h2 id="to-do">To Do</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">coinChange</span>(amount, coins):
+    <span style="color:#66d9ef">if</span> amount <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+
+    dp <span style="color:#f92672">=</span> [amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> (amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+    dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+        <span style="color:#66d9ef">for</span> coin <span style="color:#f92672">in</span> coins:
+            <span style="color:#66d9ef">if</span> coin <span style="color:#f92672">&lt;=</span> i:
+                dp[i] <span style="color:#f92672">=</span> min(dp[i], dp[i <span style="color:#f92672">-</span> coin] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+    <span style="color:#66d9ef">return</span> dp[amount] <span style="color:#66d9ef">if</span> dp[amount] <span style="color:#f92672">&lt;=</span> amount <span style="color:#66d9ef">else</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</code></pre></div><h2 id="to-do">To Do</h2>
 <ul>
 <li>Walk through greedy method</li>
 <li>Walk through top-down approach</li>
@@ -538,7 +543,7 @@ coins = 1, 2, 5 amount = 11 We can construct an explanatory matrix." />
 
 
 
-<script type="text/javascript" src="/bundle.min.87b3f38a3db2ce75b475923acfbff5600a03aacd3156e48741ecf79702087c8447b1c14b2d42ac3d33ce3f45bb346feeee85c8751f1510cf5cf92a8a5a36801c.js" integrity="sha512-h7Pzij2yznW0dZI6z7/1YAoDqs0xVuSHQez3lwIIfIRHscFLLUKsPTPOP0W7NG/u7oXIdR8VEM9c&#43;SqKWjaAHA=="></script>
+<script type="text/javascript" src="/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
 
 
 
