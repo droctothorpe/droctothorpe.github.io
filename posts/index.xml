@@ -32,7 +32,7 @@ times on the left. About a fourth of the time, you have to run through that
 whole sequence twice.</p>
 <p>That comes out to:</p>
 <pre tabindex="0"><code>2 * (1 + 1 + 5 * 4 + 5 * 4)
-</code></pre><p>i.e. <strong>84</strong> discrete turns!</p>
+</code></pre><p>i.e. <strong>84</strong> discrete turns for the top layer alone!</p>
 <p>How someone is meant to figure that out on their own is beyond me. And why the
 hell would I want to bang my head against the wall for months when I can just
 watch a video and learn it in two hours? Apparently, Ernő Rubik, the inventor of
