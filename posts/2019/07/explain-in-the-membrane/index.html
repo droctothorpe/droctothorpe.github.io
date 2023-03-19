@@ -44,14 +44,9 @@ explain () { if [ &amp;#34;$#&amp;#34; -eq 0 ] then while read -p &amp;#34;Comma
 
 
 <meta itemprop="name" content="Explain in the membrane">
-<meta itemprop="description" content="An exploration of explainshell and cheat.sh, two excellent bash productivity enhancement tools.">
-<meta itemprop="datePublished" content="2019-07-22T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-07-22T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="404">
-<meta itemprop="image" content="/"/>
-
-
-
+<meta itemprop="description" content="An exploration of explainshell and cheat.sh, two excellent bash productivity enhancement tools."><meta itemprop="datePublished" content="2019-07-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-07-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="404"><meta itemprop="image" content="/"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/"/>
@@ -64,10 +59,10 @@ explain () { if [ &amp;#34;$#&amp;#34; -eq 0 ] then while read -p &amp;#34;Comma
     <meta property="og:title" content="Explain in the membrane" />
 <meta property="og:description" content="An exploration of explainshell and cheat.sh, two excellent bash productivity enhancement tools." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/2019/07/explain-in-the-membrane/" />
-<meta property="og:image" content="/"/>
+<meta property="og:url" content="/posts/2019/07/explain-in-the-membrane/" /><meta property="og:image" content="/"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-07-22T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-07-22T00:00:00+00:00" />
+
 
 
 
@@ -89,7 +84,7 @@ explain () { if [ &amp;#34;$#&amp;#34; -eq 0 ] then while read -p &amp;#34;Comma
         <div class="container">
             <header class="header">
     <span class="header__inner">
-        <a href="/" style="text-decoration: none;">
+        <a href="/posts" style="text-decoration: none;">
     <div class="logo">
         
             <span class="logo__mark">></span>
@@ -153,7 +148,7 @@ explain () { if [ &amp;#34;$#&amp;#34; -eq 0 ] then while read -p &amp;#34;Comma
       <h2 id="explainshell">Explainshell</h2>
 <p>I stumbled into this brilliant tidbit in a <a href="https://news.ycombinator.com/item?id=13994923">post</a> by LostCharacter on ycombinator.</p>
 <p>Here&rsquo;s the actual code:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">explain <span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">explain <span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$#<span style="color:#e6db74">&#34;</span> -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>
     <span style="color:#66d9ef">then</span>
         <span style="color:#66d9ef">while</span> read -p <span style="color:#e6db74">&#34;Command: &#34;</span> cmd
@@ -173,7 +168,7 @@ explain () { if [ &amp;#34;$#&amp;#34; -eq 0 ] then while read -p &amp;#34;Comma
 </code></pre></div><p>It interacts with <a href="https://www.mankier.com/">www.mankier.com</a> (an awesome website in its own right) to explain what a specified bash command does, and most compellingly, what the specified flags do.</p>
 <p><a href="https://www.explainshell.com/">Explainshell</a> offers a similar service, but staying in the terminal ecosystem is preferable because it alleviates the need to switch contexts and justifies a degree of technical elitism. Browsers are for newbs, after all. You&rsquo;re reading this via Lynx I assume.</p>
 <p>Here&rsquo;s an example of usage and corresponding output:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ explain <span style="color:#e6db74">&#39;rsync -a&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ explain <span style="color:#e6db74">&#39;rsync -a&#39;</span>
 rsync<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>
   a fast, versatile, remote <span style="color:#f92672">(</span>and local<span style="color:#f92672">)</span> file-copying tool
 -a <span style="color:#f92672">(</span>-A, --ARCHIVE<span style="color:#f92672">)</span>
@@ -185,19 +180,19 @@ rsync<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>
 </code></pre></div><p>Just add the function to your respective shell profile, and revel in the glory of bashlightenment.</p>
 <h2 id="cheatsh">Cheat.sh</h2>
 <p><a href="https://cheat.sh/">Cheat.sh</a> is very useful. The command line interface can be installed in <a href="https://github.com/chubin/cheat.sh#installation">two steps</a>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
 chmod +x /usr/local/bin/cht.sh
 </code></pre></div><p>Once installed, just type <code>cht.sh &lt;any question&gt;</code>. It runs a stack overflow search and returns the response with the highest upvotes, circumventing the need to context switch to your browser.</p>
 <p>Here&rsquo;s an example:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ cht.sh python random int
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ cht.sh python random int
 <span style="color:#75715e">#  python - Generate random integers between 0 and 9</span>
-#
+<span style="color:#75715e">#</span>
 <span style="color:#75715e">#  Try:</span>
 from random import randint
 print<span style="color:#f92672">(</span>randint<span style="color:#f92672">(</span>0, 9<span style="color:#f92672">))</span>
 <span style="color:#75715e">#  More info:</span>
 <span style="color:#75715e">#  https://docs.python.org/3/library/random.htmlrandom.randint</span>
-#
+<span style="color:#75715e">#</span>
 <span style="color:#75715e">#  [kovshenin] [so/q/3996904] [cc by-sa 3.0]</span>
 </code></pre></div><h2 id="story-time">Story Time</h2>
 <p>Since we&rsquo;re (sort of) on the subject, I heard a funny story from a friend recently.</p>
@@ -238,7 +233,7 @@ print<span style="color:#f92672">(</span>randint<span style="color:#f92672">(</s
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2022</span>
+            <span>&copy; 2023</span>
             
             
             <span><a href="/about">droctothorpe</a></span>
@@ -262,7 +257,7 @@ print<span style="color:#f92672">(</span>randint<span style="color:#f92672">(</s
 
 
 
-<script type="text/javascript" src="/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
+<script type="text/javascript" src="/bundle.min.a0f363fdf81cdc5cfacc447a79c33189eb000d090336cd04aac8ee256f423b3133b836c281944c19c75e38d0b0b449f01ce5807e37798b7ac94ac1db51983fc4.js" integrity="sha512-oPNj/fgc3Fz6zER6ecMxiesADQkDNs0EqsjuJW9COzEzuDbCgZRMGcdeONCwtEnwHOWAfjd5i3rJSsHbUZg/xA=="></script>
 
 
 

@@ -6,10 +6,17 @@
     <description>Recent content on a code to joy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Dec 2022 22:35:57 -0500</lastBuildDate>
-    
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sat, 18 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reinventing the wheel</title>
+      <link>/posts/2023/03/reinventing-the-wheel/</link>
+      <pubDate>Sat, 18 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/03/reinventing-the-wheel/</guid>
+      <description>After receiving a Rubik’s cube for free at KubeCon NA, I decided to teach my six year old daughter how to solve them, but first, I had to teach myself.
+It took approximately 2 hours of watching Youtube videos to learn. Around half of that time was spent finding a tutorial that didn&amp;rsquo;t stuck.
+I taught my daughter over the course of a few evenings. She picked it up like a baws and impresses the heck out of people with it.</description>
+    </item>
     
     <item>
       <title>WPAYTTS</title>
@@ -108,21 +115,6 @@ I wanted to use Logrus, a highly regarded structured logging framework for Go. I
       <description>Explainshell I stumbled into this brilliant tidbit in a post by LostCharacter on ycombinator.
 Here&amp;rsquo;s the actual code:
 explain () { if [ &amp;#34;$#&amp;#34; -eq 0 ] then while read -p &amp;#34;Command: &amp;#34; cmd do curl -Gs &amp;#34;https://www.mankier.com/api/explain/?cols=&amp;#34;$(tput cols) --data-urlencode &amp;#34;q=$cmd&amp;#34; done echo &amp;#34;Bye!&amp;#34; elif [ &amp;#34;$#&amp;#34; -eq 1 ] then curl -Gs &amp;#34;https://www.mankier.com/api/explain/?cols=&amp;#34;$(tput cols) --data-urlencode &amp;#34;q=$1&amp;#34; else echo &amp;#34;Usage&amp;#34; echo &amp;#34;explain interactive mode.&amp;#34; echo &amp;#34;explain &amp;#39;cmd -o | ...&amp;#39; one quoted command to explain it.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/about/</guid>
-      <description>Hello.
-I&amp;rsquo;m Alex.
-I write code and ideas and stuff, allegedly.
-I work on a platform for distributed ML at Capital One&amp;rsquo;s Center for Machine Learning.
-I live in the NYC metro area with my wife and three kiddoes.
-You can find me on:
- Github LinkedIn  You can contact me via email.</description>
     </item>
     
   </channel>

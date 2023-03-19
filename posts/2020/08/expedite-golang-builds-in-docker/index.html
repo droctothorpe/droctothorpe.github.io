@@ -44,14 +44,9 @@ Downloading dependencies After passing the -v flag to the go build command, I no
 
 <meta itemprop="name" content="Expedite Golang builds in Docker">
 <meta itemprop="description" content="The problem I was recently working on a Golang API that imported the Kubernetes client. I implemented Skaffold to streamline the local development cycle, but rebuilds after source code changes consistently took 50 seconds, no matter how small the change. That&rsquo;s unacceptably long, in my opinion, so I set about the task of improving the development cycle by optimizing the Docker build time.
-Downloading dependencies After passing the -v flag to the go build command, I noticed that a significant length of time was spent fetching the dependencies.">
-<meta itemprop="datePublished" content="2020-08-19T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-08-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="390">
-<meta itemprop="image" content="/"/>
-
-
-
+Downloading dependencies After passing the -v flag to the go build command, I noticed that a significant length of time was spent fetching the dependencies."><meta itemprop="datePublished" content="2020-08-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-08-19T00:00:00+00:00" />
+<meta itemprop="wordCount" content="390"><meta itemprop="image" content="/"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/"/>
@@ -66,10 +61,10 @@ Downloading dependencies After passing the -v flag to the go build command, I no
 <meta property="og:description" content="The problem I was recently working on a Golang API that imported the Kubernetes client. I implemented Skaffold to streamline the local development cycle, but rebuilds after source code changes consistently took 50 seconds, no matter how small the change. That&rsquo;s unacceptably long, in my opinion, so I set about the task of improving the development cycle by optimizing the Docker build time.
 Downloading dependencies After passing the -v flag to the go build command, I noticed that a significant length of time was spent fetching the dependencies." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/2020/08/expedite-golang-builds-in-docker/" />
-<meta property="og:image" content="/"/>
+<meta property="og:url" content="/posts/2020/08/expedite-golang-builds-in-docker/" /><meta property="og:image" content="/"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-08-19T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-08-19T00:00:00+00:00" />
+
 
 
 
@@ -91,7 +86,7 @@ Downloading dependencies After passing the -v flag to the go build command, I no
         <div class="container">
             <header class="header">
     <span class="header__inner">
-        <a href="/" style="text-decoration: none;">
+        <a href="/posts" style="text-decoration: none;">
     <div class="logo">
         
             <span class="logo__mark">></span>
@@ -171,14 +166,14 @@ Downloading dependencies After passing the -v flag to the go build command, I no
 <h2 id="downloading-dependencies">Downloading dependencies</h2>
 <p>After passing the <code>-v</code> flag to the <code>go build</code> command, I noticed that a significant length of time was spent fetching the dependencies.</p>
 <p>There are two ways to address this problem.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Docker" data-lang="Docker"><span style="color:#66d9ef">COPY</span> go.mod go.sum .<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Docker" data-lang="Docker"><span style="color:#66d9ef">COPY</span> go.mod go.sum .<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> go mod download<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>...<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . .<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> go build .<span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><p>In a nutshell, by copying <code>go.mod</code> and <code>go.sum</code> then running <code>go mod download</code>, you&rsquo;re consolidating the dependency retrieval into a standalone Docker image layer which gets cached. Subsequent rebuilds will leverage the cache, except in the comparatively rare exception that you make changes to <code>go.mod</code> or <code>go.sum</code>.</p>
 <p>If you&rsquo;re vendoring, committing your <code>vendor</code> directory to source, and using Go v1.14 or greater, you can use the vendor directory instead of re-downloading your dependencies:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Docker" data-lang="Docker"><span style="color:#66d9ef">COPY</span> . . <span style="color:#75715e"># Including the vendor directory</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Docker" data-lang="Docker"><span style="color:#66d9ef">COPY</span> . . <span style="color:#75715e"># Including the vendor directory</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> GO111MODULE<span style="color:#f92672">=</span>on
 <span style="color:#66d9ef">RUN</span> go build .<span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><h2 id="compilation">Compilation</h2>
@@ -187,20 +182,20 @@ Downloading dependencies After passing the -v flag to the go build command, I no
 <h2 id="buildkit-to-the-rescue">BuildKit to the rescue</h2>
 <p>I explored a few options, including compiling only the dependencies in a Docker image layer and mounting my GOCACHE to the build, but the solution turned out to be pleasantly simple.</p>
 <p>Enable <a href="https://docs.docker.com/develop/develop-images/build_enhancements/">BuildKit</a> by running:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export DOCKER_BUILDKIT<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export DOCKER_BUILDKIT<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
 </code></pre></div><p>and adding:</p>
-<pre><code># syntax = docker/dockerfile:1-experimental
+<pre tabindex="0"><code># syntax = docker/dockerfile:1-experimental
 </code></pre><p>to the top of your Dockerfile, then preface your <code>go build</code> command in the Dockerfile as follows:</p>
-<pre><code>RUN --mount=type=cache,target=/root/.cache/go-build \
+<pre tabindex="0"><code>RUN --mount=type=cache,target=/root/.cache/go-build \
 go build
 </code></pre><h2 id="how-it-works">How it works</h2>
 <p>In a nutshell, the mount implements a cache that persists across multiple builds. After an initial, extended build, subsequent builds leverage the cache and are therefore much more efficient.</p>
 <p>This <em>dramatically</em> reduced my build time.</p>
 <p>Before enabling the cache:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ docker build .
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ docker build .
 <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Building 47.8s <span style="color:#f92672">(</span>15/15<span style="color:#f92672">)</span> FINISHED 
 </code></pre></div><p>After enabling the cache:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ docker build .
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ docker build .
 <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Building 7.6s <span style="color:#f92672">(</span>15/15<span style="color:#f92672">)</span> FINISHED 
 </code></pre></div><p>That&rsquo;s a <strong>40.2</strong> second reduction in build time. Not too shabby!</p>
 <p>Side note, I&rsquo;m using a <a href="https://docs.docker.com/develop/develop-images/multistage-build/">multistage build</a>, but this advice is equally applicable regardless of stage count.</p>
@@ -236,7 +231,7 @@ go build
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2022</span>
+            <span>&copy; 2023</span>
             
             
             <span><a href="/about">droctothorpe</a></span>
@@ -260,7 +255,7 @@ go build
 
 
 
-<script type="text/javascript" src="/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
+<script type="text/javascript" src="/bundle.min.a0f363fdf81cdc5cfacc447a79c33189eb000d090336cd04aac8ee256f423b3133b836c281944c19c75e38d0b0b449f01ce5807e37798b7ac94ac1db51983fc4.js" integrity="sha512-oPNj/fgc3Fz6zER6ecMxiesADQkDNs0EqsjuJW9COzEzuDbCgZRMGcdeONCwtEnwHOWAfjd5i3rJSsHbUZg/xA=="></script>
 
 
 

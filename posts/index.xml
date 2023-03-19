@@ -5,8 +5,63 @@
         <description>Recent content in Posts on a code to joy</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sat, 17 Dec 2022 22:35:57 -0500</lastBuildDate>
+        <lastBuildDate>Sat, 18 Mar 2023 00:00:00 +0000</lastBuildDate>
         <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Reinventing the wheel</title>
+            <link>/posts/2023/03/reinventing-the-wheel/</link>
+            <pubDate>Sat, 18 Mar 2023 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/2023/03/reinventing-the-wheel/</guid>
+            <description>After receiving a Rubik’s cube for free at KubeCon NA, I decided to teach my six year old daughter how to solve them, but first, I had to teach myself.
+It took approximately 2 hours of watching Youtube videos to learn. Around half of that time was spent finding a tutorial that didn&amp;rsquo;t stuck.
+I taught my daughter over the course of a few evenings. She picked it up like a baws and impresses the heck out of people with it.</description>
+            <content type="html"><![CDATA[<p><img src="https://i.giphy.com/media/UqPhCdioYHmdq/giphy.gif" alt=""></p>
+<p>After receiving a Rubik’s cube for free at KubeCon NA, I decided to teach my six
+year old daughter how to solve them, but first, I had to teach myself.</p>
+<p>It took approximately 2 hours of watching Youtube videos to learn. Around half of that
+time was spent finding a tutorial that didn&rsquo;t stuck.</p>
+<p>I taught my daughter over the course of a few evenings. She picked it up like a
+baws and impresses the heck out of people with it.</p>
+<p>A few people have asked me, “Could you have figured it out on your own?”</p>
+<p>My answer is an unequivocal, “F*ck no.&quot;</p>
+<p>Solving the final layer requires executing the right algorithm (four turns) once
+on the right, then once on the left, then five times on the right, then five
+times on the left. About a fourth of the time, you have to run through that
+whole sequence twice.</p>
+<p>That comes out to:</p>
+<pre tabindex="0"><code>2 * (1 + 1 + 5 * 4 + 5 * 4)
+</code></pre><p>i.e. <strong>84</strong> discrete turns!</p>
+<p>How someone is meant to figure that out on their own is beyond me. And why the
+hell would I want to bang my head against the wall for months when I can just
+watch a video and learn it in two hours? Apparently, Ernő Rubik, the inventor of
+the dang thing, took a month to solve it.</p>
+<p>This experience got me thinking about the dialectic between knowledge transfer
+and figuring sh*t out for yourself &ndash; in particular, the often vague boundary
+between when to deploy one strategy vs the other, particularly in the context of
+data structures and algorithms.</p>
+<p>I love learning about brilliant and elegant solutions for complex problems. I
+don&rsquo;t particularly enjoy trying to reinvent them from scratch. It feels like a
+waste of time.</p>
+<p>If watching the Rubik&rsquo;s cube tutorial <em>first</em> was so effective, efficient, and
+rewarding, why was I staring at a blank leetcode editor for so long?</p>
+<p>I decided to try a new strategy.</p>
+<p>I would watch a video on <a href="https://neetcode.io/">neetcode</a> before bed. The
+following night, I would implement the solution from memory on leetcode.</p>
+<p>It has been a complete game changer.</p>
+<p>Previously, I only turned to explanations after I&rsquo;d given up reinventing the
+wheel. They came to represent my inadequacy. They were a crutch, a white flag of
+surrender.</p>
+<p>Now, they&rsquo;re a delight. The efficient solutions are elegant and inspired. The
+explanations are clear and succinct.</p>
+<p>Next day implementation has been surprisingly quick and easy. I look forward to
+testing recall again further down the line.</p>
+<p>Everyone learns differently, but on the off chance that someone else could
+benefit from it, I wanted to share my positive experience. There&rsquo;s nothing wrong
+with starting with the explanations first!</p>
+]]></content>
+        </item>
         
         <item>
             <title>WPAYTTS</title>
@@ -92,7 +147,7 @@ labor from the world at large.</p>
 literary executor, Max Brod, with explicit instructions that it should be
 destroyed on Kafka’s death; Kafka wrote: “Dearest Max, my last request:
 Everything I leave behind me &hellip; in the way of diaries, manuscripts, letters
-(my own and others’), sketches, and so on, is to be burned unread.&rdquo; Brod
+(my own and others’), sketches, and so on, is to be burned unread.&quot; Brod
 ignored this request and published the novels and collected works between 1925
 and 1935.</p>
 <p>&ndash; <!-- raw HTML omitted --><a href="https://en.wikipedia.org/wiki/Franz_Kafka#Max_Brod">https://en.wikipedia.org/wiki/Franz_Kafka#Max_Brod</a><!-- raw HTML omitted --></p>
@@ -220,7 +275,7 @@ string.</p>
 <p>First and foremost, you need example input. If it&rsquo;s not provided by default,
 either ask for it or define your own inputs.</p>
 <p>In this case, Leetcode provides us with example input:</p>
-<pre><code>Example 1:
+<pre tabindex="0"><code>Example 1:
 Input: haystack = &quot;hello&quot;, needle = &quot;ll&quot;
 Output: 2
 </code></pre><p><strong>Resist</strong> the temptation to write code.</p>
@@ -252,7 +307,7 @@ efficient; other times it is inefficient and you can improve on it. Either way,
 defer optimization. First make it work, then make it better. An inefficient
 solution is better than no solution.</p>
 <p>Here is a pretty simple implementation of the process outlined above in Python.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">strStr</span>(self, haystack: str, needle: str) <span style="color:#f92672">-&gt;</span> int:
         haystack_length <span style="color:#f92672">=</span> len(haystack) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
         needle_length <span style="color:#f92672">=</span> len(needle) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
@@ -293,14 +348,14 @@ Downloading dependencies After passing the -v flag to the go build command, I no
 <h2 id="downloading-dependencies">Downloading dependencies</h2>
 <p>After passing the <code>-v</code> flag to the <code>go build</code> command, I noticed that a significant length of time was spent fetching the dependencies.</p>
 <p>There are two ways to address this problem.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Docker" data-lang="Docker"><span style="color:#66d9ef">COPY</span> go.mod go.sum .<span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Docker" data-lang="Docker"><span style="color:#66d9ef">COPY</span> go.mod go.sum .<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> go mod download<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>...<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . .<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> go build .<span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><p>In a nutshell, by copying <code>go.mod</code> and <code>go.sum</code> then running <code>go mod download</code>, you&rsquo;re consolidating the dependency retrieval into a standalone Docker image layer which gets cached. Subsequent rebuilds will leverage the cache, except in the comparatively rare exception that you make changes to <code>go.mod</code> or <code>go.sum</code>.</p>
 <p>If you&rsquo;re vendoring, committing your <code>vendor</code> directory to source, and using Go v1.14 or greater, you can use the vendor directory instead of re-downloading your dependencies:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Docker" data-lang="Docker"><span style="color:#66d9ef">COPY</span> . . <span style="color:#75715e"># Including the vendor directory</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Docker" data-lang="Docker"><span style="color:#66d9ef">COPY</span> . . <span style="color:#75715e"># Including the vendor directory</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> GO111MODULE<span style="color:#f92672">=</span>on
 <span style="color:#66d9ef">RUN</span> go build .<span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><h2 id="compilation">Compilation</h2>
@@ -309,20 +364,20 @@ Downloading dependencies After passing the -v flag to the go build command, I no
 <h2 id="buildkit-to-the-rescue">BuildKit to the rescue</h2>
 <p>I explored a few options, including compiling only the dependencies in a Docker image layer and mounting my GOCACHE to the build, but the solution turned out to be pleasantly simple.</p>
 <p>Enable <a href="https://docs.docker.com/develop/develop-images/build_enhancements/">BuildKit</a> by running:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export DOCKER_BUILDKIT<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export DOCKER_BUILDKIT<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
 </code></pre></div><p>and adding:</p>
-<pre><code># syntax = docker/dockerfile:1-experimental
+<pre tabindex="0"><code># syntax = docker/dockerfile:1-experimental
 </code></pre><p>to the top of your Dockerfile, then preface your <code>go build</code> command in the Dockerfile as follows:</p>
-<pre><code>RUN --mount=type=cache,target=/root/.cache/go-build \
+<pre tabindex="0"><code>RUN --mount=type=cache,target=/root/.cache/go-build \
 go build
 </code></pre><h2 id="how-it-works">How it works</h2>
 <p>In a nutshell, the mount implements a cache that persists across multiple builds. After an initial, extended build, subsequent builds leverage the cache and are therefore much more efficient.</p>
 <p>This <em>dramatically</em> reduced my build time.</p>
 <p>Before enabling the cache:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ docker build .
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ docker build .
 <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Building 47.8s <span style="color:#f92672">(</span>15/15<span style="color:#f92672">)</span> FINISHED 
 </code></pre></div><p>After enabling the cache:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ docker build .
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ docker build .
 <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Building 7.6s <span style="color:#f92672">(</span>15/15<span style="color:#f92672">)</span> FINISHED 
 </code></pre></div><p>That&rsquo;s a <strong>40.2</strong> second reduction in build time. Not too shabby!</p>
 <p>Side note, I&rsquo;m using a <a href="https://docs.docker.com/develop/develop-images/multistage-build/">multistage build</a>, but this advice is equally applicable regardless of stage count.</p>
@@ -346,7 +401,7 @@ coins = 1, 2, 5 amount = 11 We can construct an explanatory matrix.</description
 </blockquote>
 <h2 id="explanatory-matrix">Explanatory matrix</h2>
 <p>Given the following input:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">coins <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">coins <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>
 amount <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span>
 </code></pre></div><p>We can construct an explanatory matrix.</p>
 <table>
@@ -426,7 +481,7 @@ amount <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span
 <p>For you, this is infinity.</p>
 </blockquote>
 <p>Since no value will ever reach or exceed 12, it will never be returned in the ensuing <code>min</code> invocations. 0 and -1 do not work as initialization values, because they will always be the minimum. <code>None</code> doesn&rsquo;t work because it cannot be compared to an integer.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Guardian against the edge case of amount being 0</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Guardian against the edge case of amount being 0</span>
 <span style="color:#66d9ef">if</span> amount <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
   <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
 
@@ -434,9 +489,9 @@ amount <span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span
 dp <span style="color:#f92672">=</span> [amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> (amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
 dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
 </code></pre></div><p>The resulting array looks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>]
 </code></pre></div><p>Now comes the tricky part. There are two nested loops.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(amount <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
   <span style="color:#66d9ef">for</span> coin <span style="color:#f92672">in</span> coins:
       <span style="color:#66d9ef">if</span> coin <span style="color:#f92672">&lt;=</span> index:
           dp[i] <span style="color:#f92672">=</span> min(dp[i], dp[i <span style="color:#f92672">-</span> coin] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
@@ -505,7 +560,7 @@ dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <s
 </table>
 <p><code>min(dp[i], dp[i - coin] + 1)</code> boils down to <code>min(12, 1)</code>. Since <code>1 &lt; 12</code> (in other news, the sky is blue), we update the value at the first index to 1.</p>
 <p>The updated array looks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>]
 </code></pre></div><p>Things get more interesting in the next outer loop.</p>
 <table>
 <thead>
@@ -607,12 +662,12 @@ dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <s
 <p>For a specified amount, we can lookup how many coins it takes to get that amount minus the current coin, then just add one to the total number of coins (for the current coin).</p>
 <p>In this specific context, we&rsquo;re trying to reach an amount of 2 and the current coin is 2. <code>i - coin</code> equals 0, so we look up 0 in the <code>dp</code> array, which returns 0, then we add 1 to the total number of coins (which represents the 2 coin) to arrive at a total of 1. The call to <code>min</code> helps us prioritize the more efficient way of reaching an amount of 2: it&rsquo;s better to use 1 x 2 coin than 2 x 1 coins.</p>
 <p>The updated array looks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">12</span>]
 </code></pre></div><p>When we complete the remaining iterations, the completed array looks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
 </code></pre></div><p>Once the array is complete, all we have to do is return <code>dp[amount]</code> to look up the minimum amount of coins required to get to the specified amount.</p>
 <p>The full return statement looks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">return</span> dp[amount] <span style="color:#66d9ef">if</span> dp[amount] <span style="color:#f92672">&lt;=</span> amount <span style="color:#66d9ef">else</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">return</span> dp[amount] <span style="color:#66d9ef">if</span> dp[amount] <span style="color:#f92672">&lt;=</span> amount <span style="color:#66d9ef">else</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
 </code></pre></div><p>The <code>if dp[amount] &lt;= amount else -1</code> is required in case no amount of coins can create the specified amount, which would indicate that the denominations are not canonical.</p>
 <h2 id="complexity">Complexity</h2>
 <h3 id="time">Time</h3>
@@ -621,7 +676,7 @@ dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <s
 <h3 id="space">Space</h3>
 <p><code>0(amount)</code> since the dp array requires <code>amount + 1</code> elements and the 1 is dropped.</p>
 <h2 id="code">Code</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">coinChange</span>(amount, coins):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">coinChange</span>(amount, coins):
     <span style="color:#66d9ef">if</span> amount <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
         <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
 
@@ -688,7 +743,7 @@ I wanted to use Logrus, a highly regarded structured logging framework for Go. I
 <p>I wanted to use <a href="https://github.com/sirupsen/logrus">Logrus</a>, a highly regarded structured logging framework for Go. I wanted informative, colorized, leveled logs, but I also wanted to be able to log simple, user-facing output without all of the bells and whistles. I was surprised at the lack of documentation around this simple goal.</p>
 <p>Here&rsquo;s one way to solve this problem.</p>
 <p>Create a file called <code>logging.go</code> in your <code>cmd</code> package:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">cmd</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">cmd</span>
 
 <span style="color:#f92672">import</span> (
 	<span style="color:#e6db74">&#34;fmt&#34;</span>
@@ -715,7 +770,7 @@ I wanted to use Logrus, a highly regarded structured logging framework for Go. I
 	}
 }
 </code></pre></div><p>Add a <code>PreRun</code> to each of your Cobra commands:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">addCmd</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">cobra</span>.<span style="color:#a6e22e">Command</span>{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">addCmd</span> = <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">cobra</span>.<span style="color:#a6e22e">Command</span>{
     <span style="color:#f92672">...</span>
 	<span style="color:#a6e22e">PreRun</span>: <span style="color:#a6e22e">toggleDebug</span>, <span style="color:#75715e">// This. 
 </span><span style="color:#75715e"></span>	<span style="color:#a6e22e">Run</span>: <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">cmd</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">cobra</span>.<span style="color:#a6e22e">Command</span>, <span style="color:#a6e22e">args</span> []<span style="color:#66d9ef">string</span>) {
@@ -723,12 +778,12 @@ I wanted to use Logrus, a highly regarded structured logging framework for Go. I
 </span><span style="color:#75715e"></span>    }
 }
 </code></pre></div><p>Add a global persistent flag to <code>root.go</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">init</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">init</span>() {
     <span style="color:#f92672">...</span>
 	<span style="color:#a6e22e">rootCmd</span>.<span style="color:#a6e22e">PersistentFlags</span>().<span style="color:#a6e22e">BoolVarP</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">debug</span>, <span style="color:#e6db74">&#34;debug&#34;</span>, <span style="color:#e6db74">&#34;d&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#34;verbose logging&#34;</span>)
 }
 </code></pre></div><p>It&rsquo;s as simple as that. Now you can reap the benefits of flag-toggled leveled logs. Use the following invocations anywhere in your code:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Info</span>()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Info</span>()
 <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Debug</span>()
 <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Warning</span>()
 <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Error</span>()
@@ -750,7 +805,7 @@ explain () { if [ &amp;#34;$#&amp;#34; -eq 0 ] then while read -p &amp;#34;Comma
             <content type="html"><![CDATA[<h2 id="explainshell">Explainshell</h2>
 <p>I stumbled into this brilliant tidbit in a <a href="https://news.ycombinator.com/item?id=13994923">post</a> by LostCharacter on ycombinator.</p>
 <p>Here&rsquo;s the actual code:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">explain <span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">explain <span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
     <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$#<span style="color:#e6db74">&#34;</span> -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>
     <span style="color:#66d9ef">then</span>
         <span style="color:#66d9ef">while</span> read -p <span style="color:#e6db74">&#34;Command: &#34;</span> cmd
@@ -770,7 +825,7 @@ explain () { if [ &amp;#34;$#&amp;#34; -eq 0 ] then while read -p &amp;#34;Comma
 </code></pre></div><p>It interacts with <a href="https://www.mankier.com/">www.mankier.com</a> (an awesome website in its own right) to explain what a specified bash command does, and most compellingly, what the specified flags do.</p>
 <p><a href="https://www.explainshell.com/">Explainshell</a> offers a similar service, but staying in the terminal ecosystem is preferable because it alleviates the need to switch contexts and justifies a degree of technical elitism. Browsers are for newbs, after all. You&rsquo;re reading this via Lynx I assume.</p>
 <p>Here&rsquo;s an example of usage and corresponding output:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ explain <span style="color:#e6db74">&#39;rsync -a&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ explain <span style="color:#e6db74">&#39;rsync -a&#39;</span>
 rsync<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>
   a fast, versatile, remote <span style="color:#f92672">(</span>and local<span style="color:#f92672">)</span> file-copying tool
 -a <span style="color:#f92672">(</span>-A, --ARCHIVE<span style="color:#f92672">)</span>
@@ -782,19 +837,19 @@ rsync<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>
 </code></pre></div><p>Just add the function to your respective shell profile, and revel in the glory of bashlightenment.</p>
 <h2 id="cheatsh">Cheat.sh</h2>
 <p><a href="https://cheat.sh/">Cheat.sh</a> is very useful. The command line interface can be installed in <a href="https://github.com/chubin/cheat.sh#installation">two steps</a>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
 chmod +x /usr/local/bin/cht.sh
 </code></pre></div><p>Once installed, just type <code>cht.sh &lt;any question&gt;</code>. It runs a stack overflow search and returns the response with the highest upvotes, circumventing the need to context switch to your browser.</p>
 <p>Here&rsquo;s an example:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ cht.sh python random int
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ cht.sh python random int
 <span style="color:#75715e">#  python - Generate random integers between 0 and 9</span>
-#
+<span style="color:#75715e">#</span>
 <span style="color:#75715e">#  Try:</span>
 from random import randint
 print<span style="color:#f92672">(</span>randint<span style="color:#f92672">(</span>0, 9<span style="color:#f92672">))</span>
 <span style="color:#75715e">#  More info:</span>
 <span style="color:#75715e">#  https://docs.python.org/3/library/random.htmlrandom.randint</span>
-#
+<span style="color:#75715e">#</span>
 <span style="color:#75715e">#  [kovshenin] [so/q/3996904] [cc by-sa 3.0]</span>
 </code></pre></div><h2 id="story-time">Story Time</h2>
 <p>Since we&rsquo;re (sort of) on the subject, I heard a funny story from a friend recently.</p>
